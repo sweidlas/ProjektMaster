@@ -1,4 +1,4 @@
-package start.userInterface.ProductView;
+package start.userInterface.productView;
 
 import java.awt.Button;
 import java.awt.Color;
