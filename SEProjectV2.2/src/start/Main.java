@@ -2,10 +2,13 @@ package start;
 
 public class Main {
 
+	public static database.allProducts.AllProducts Datenbank = new database.allProducts.AllProducts();
+	public static database.allProducts.AllProductsInList List = new database.allProducts.AllProductsInList();
+	
 	public static void main(String[] args) {
-		start.userInterface.mainWindow.MainWindow myMainWindow = new start.userInterface.mainWindow.MainWindow (); 
+		userInterface.mainWindow.MainWindow myMainWindow = new userInterface.mainWindow.MainWindow (); 
 		//start.userInterface.productView.ProductView myProductView = new start.userInterface.productView.ProductView (); 
-		//start.exeptions.Exception myException1 = new start.exeptions.Exception ();
+		//start.exeptions.Exception myException1 = new start.exeptions.Exception ("there is a Problem");
 	}
 
 }
