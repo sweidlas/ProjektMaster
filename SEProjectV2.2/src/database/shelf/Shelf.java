@@ -8,13 +8,12 @@ import java.lang.Exception;
 
 public class Shelf { //Class for the Single S
 
-	private ArrayList<Product> shelfContent = new ArrayList<Product>();
+	ArrayList<Product> shelfContent = new ArrayList<Product>();
 	//Workload in decigram >> Max 10Tones == 100.000.000 decigram
 	protected int workload = 0; 
 
 	
-	public Shelf() {	
-	}
+	public Shelf() {}
 	
 	public void addProduct(Product newProduct) throws Exception{	
 		int newLoad = newProduct.getAmount()*newProduct.getWeight();
@@ -39,5 +38,12 @@ public class Shelf { //Class for the Single S
 		}
 	}
 
+	public ArrayList<String> getStringOfShelf() {
+		ArrayList<String> shelfContentAsString = new ArrayList<String>();
+		for (int ii = 0; shelfContent.size() > ii ; ii++) {
+			shelfContentAsString.add(shelfContent.get(ii).toString());
+			}
+		return shelfContentAsString;
+	}
 
 }

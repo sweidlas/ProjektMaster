@@ -7,14 +7,12 @@ import database.singleProduct.Product;
 
 public class AllProducts { //The Class of the Full Database
 	
-	private ArrayList<Shelf> Shelfs = new ArrayList<Shelf>();
-	
-	
+	public ArrayList<Shelf> shelfs = new ArrayList<Shelf>(); //TODO change to private (use getter/setter)
 	
 	public AllProducts() {
 		for (int ii=0; ii<999; ii++) {
 			Shelf newShelf = new Shelf();
-			Shelfs.add(newShelf);
+			shelfs.add(newShelf);
 		}
 		try{
 			loadFile();
@@ -24,29 +22,28 @@ public class AllProducts { //The Class of the Full Database
 	}
 	
 	public void addProduct(int shelfNr, Product p) throws Exception{
-		testNewProduct(); //Tests Syntax
-		//TODO
+
 		try{
-			Shelfs.get(shelfNr).addProduct(p);//Weight Tests in ShelfTests Class
+			testNewProduct(p);// Test Syntax
+			shelfs.get(shelfNr).addProduct(p);//Weight Tests in ShelfTests Class
+			
 		} catch (Exception e) {}
-		
 	}
 	
 	public void changeProduct(Product oldVersion, Product newVersion, int oldShelfNr, int newShelfNr) throws Exception {
 
 		try {
-			Shelfs.get(oldShelfNr).removeProduct(oldVersion);
+			shelfs.get(oldShelfNr).removeProduct(oldVersion);
 			addProduct(newShelfNr, newVersion);		
 			} catch(Exception e) {throw e;}
 	}
 			
 	
 	
-	private Boolean testNewProduct(){
+	private Boolean testNewProduct(Product p) throws Exception{
 		//TODO
 		return true;
 	}
-	
 	
 	public void saveFile() {
 		//TODO
@@ -55,6 +52,7 @@ public class AllProducts { //The Class of the Full Database
 	private void loadFile() throws Exception {
 		//TODO
 	}
+	
 	
 	
 	
