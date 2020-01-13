@@ -1,11 +1,10 @@
 package database.allProducts;
 
-import start.Main;
 import java.util.ArrayList;
 
 public class AllProductsInList extends AllProducts{ // Class for List Output
 	
-	private ArrayList<String> databaseAsString = new ArrayList<String>();
+	public ArrayList<String> databaseAsString = new ArrayList<String>();
 	
 	public AllProductsInList(){
 		super();
@@ -13,7 +12,7 @@ public class AllProductsInList extends AllProducts{ // Class for List Output
 	}
 
 	public void search(String toFind) {
-		resetList();
+		createStringArray();
 		int foundObjectIndex = databaseAsString.indexOf(toFind);
 		while (foundObjectIndex > -1) {
 				this.shelfs.remove(foundObjectIndex);
@@ -22,9 +21,9 @@ public class AllProductsInList extends AllProducts{ // Class for List Output
 		}
 	}
 	
-	private void resetList() {
-		this.shelfs = Main.Datenbank.shelfs; 
+	public void reload() {
 		createStringArray();
+		
 	}
 	
 	private void createStringArray() {
@@ -32,5 +31,6 @@ public class AllProductsInList extends AllProducts{ // Class for List Output
 		for (int ii = 0; ii < 999 ; ii++) {
 			databaseAsString.addAll(shelfs.get(ii).getStringOfShelf());
 		}
+		System.out.println(databaseAsString);
 	}
 }
