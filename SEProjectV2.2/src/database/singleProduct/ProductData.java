@@ -4,15 +4,15 @@ public class ProductData { //Products Data with Getters/Setters
 
 	private String name;
 	//Weight in DECIGRAM
-	private int weight;
-	private int amount;
-	private int price;
+	private String weight;
+	private String amount;
+	private String price;
 	// Six Digits long identify Number 000.000 first 3 for Place
-	private int number; 
+	private String number; 
 	private String category;
 	
 	//constructor in Product
-	void setProductData(String name, int weight, int amount, int price, int number, String category) {
+	void setProductData(String name, String weight, String amount, String price, String number, String category) {
 		this.name = name;
 		this.weight = weight;
 		this.amount = amount;	
@@ -29,19 +29,19 @@ public class ProductData { //Products Data with Getters/Setters
 		return this.name;
 	}
 	
-	public int getWeight() {
+	public String getWeight() {
 		return this.weight;
 	}
 	
-	public int getAmount() {
+	public String getAmount() {
 		return this.amount;
 	}
 	
-	public int getPrice() {
+	public String getPrice() {
 		return this.price;
 	}
 	
-	public int getNumber() {
+	public String getNumber() {
 		return this.number;
 	}
 	
@@ -54,19 +54,19 @@ public class ProductData { //Products Data with Getters/Setters
 		this.name = name;
 	}
 	
-	public void setWeight(int weight) {
+	public void setWeight(String weight) {
 		this.weight = weight;
 	}
 	
-	public void setAmount(int amount) {
+	public void setAmount(String amount) {
 		this.amount = amount;
 	}
 	
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 	
-	public void setNumber(int number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 	

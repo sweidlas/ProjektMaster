@@ -16,8 +16,8 @@ import java.awt.event.ActionListener;
 class Interface extends Frame implements ActionListener {
 	
 
-	Button deleteCategory;
-	Button okay;
+	public Button deleteCategory;
+	public Button okay;
 	
 	public Interface() {
 		super ("Kategorien"); // set title
@@ -38,7 +38,6 @@ class Interface extends Frame implements ActionListener {
 		myGBC.gridheight = 1; // height of the element
 		deleteCategory = new Button ("löschen");
 		deleteCategory.setBackground(Color.red);
-		deleteCategory.addActionListener(this);
 		myGBL.setConstraints(deleteCategory, myGBC);
 		add(deleteCategory);
 		
@@ -49,7 +48,6 @@ class Interface extends Frame implements ActionListener {
 		myGBC.gridheight = 1; 
 		okay = new Button ("Okay");
 		okay.setBackground(Color.green);
-		okay.addActionListener (this);
 		myGBL.setConstraints(okay, myGBC);
 		add(okay);
 	
