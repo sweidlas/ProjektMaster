@@ -26,7 +26,7 @@ public class DataTable extends JTable{
 	
 	
 	public void setNewDatabase(){
-		//model.setRowCount(0);
+		model.setRowCount(0);
 		ArrayList<String> databaseAsString = start.Main.List.databaseAsString;
 		String[] showMe = new String[6];
 		for (int ii = 0; databaseAsString.size()/6>ii;ii++) {
