@@ -27,12 +27,12 @@ public class AllProductsInList extends AllProducts{ // Class for List Output
 		
 	}
 	
-	public void addProduct(int shelfNr,Product p) throws Exception{
+	public void addProduct(int shelfNr,Product p) {
 		try {
 			super.addProduct(shelfNr, p);
 			createStringArray();
 		}catch(Exception e) {
-			new exeptions.Exception(e.getMessage());
+			new exceptions.Exception(e.getMessage());
 		}
 	}
 	

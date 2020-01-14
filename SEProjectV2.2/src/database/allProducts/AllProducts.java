@@ -8,6 +8,8 @@ import database.singleProduct.Product;
 public class AllProducts { //The Class of the Full Database
 	
 	protected ArrayList<Shelf> shelfs = new ArrayList<Shelf>(); //TODO change to private (use getter/setter)
+	public static ArrayList<String> CategoryList = new ArrayList<String>();
+	String CategoryName;
 	
 	public AllProducts() {
 		for (int ii=0; ii<999; ii++) {
@@ -17,7 +19,7 @@ public class AllProducts { //The Class of the Full Database
 		try{
 			loadFile();
 		} catch (Exception e) { 
-			new exeptions.Exception(e.getMessage()); 
+			new exceptions.Exception(e.getMessage()); 
 		}
 	}
 	
@@ -25,6 +27,7 @@ public class AllProducts { //The Class of the Full Database
 
 		try{
 			testNewProduct(p);// Test Syntax
+			addCategory(p.getName());
 			shelfs.get(shelfNr).addProduct(p);//Weight Tests in Shelfs>ShelfTests Class
 			
 		} catch (Exception e) {
@@ -47,6 +50,25 @@ public class AllProducts { //The Class of the Full Database
 		return true;
 	}
 	
+		
+	public void addCategory(String name) throws Exception{
+		if (CategoryList.contains(name)) {
+			throw new Exception("Category already used");
+		} else {CategoryList.add(name);}
+	}
+	
+	public void deleteCategory(String category){
+		if (CategoryList.contains(category)) {
+			CategoryList.remove(category);
+		} else {
+			System.out.println("Category doesn't exist!");//this should not be possible
+		}
+	}
+	
+	public ArrayList<String> getCategoryList() {
+		return CategoryList;
+	}
+	
 	public void saveFile() {
 		//TODO
 	}
@@ -54,6 +76,8 @@ public class AllProducts { //The Class of the Full Database
 	private void loadFile() throws Exception {
 		//TODO
 	}
+	
+	
 	
 	/*public void save() {				
 		// for testing
