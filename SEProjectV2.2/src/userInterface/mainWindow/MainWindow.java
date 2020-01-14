@@ -10,7 +10,7 @@ public class MainWindow extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	Layout mainLayout;
-	userInterface.addProductInterface.AddProduct addI;
+	userInterface.editProductInterface.EditProduct addI;
 	userInterface.changeCategory.ChangeCategory eddI;
 	
 	public MainWindow() {
@@ -38,7 +38,7 @@ public class MainWindow extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent event) {
 
 		if(event.getSource() == mainLayout.addProduct){
-			addI = new userInterface.addProductInterface.AddProduct();
+			addI = new userInterface.editProductInterface.EditProduct();
 			addI.addProduct.addActionListener(this);
 			
 		} else if(event.getSource() == mainLayout.editCategory) {

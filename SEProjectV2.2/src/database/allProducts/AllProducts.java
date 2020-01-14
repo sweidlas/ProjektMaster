@@ -55,11 +55,6 @@ public class AllProducts { //The Class of the Full Database
 		//TODO
 	}
 	
-	
-	
-	
-	
-	
 	/*public void save() {				
 		// for testing
 		try {

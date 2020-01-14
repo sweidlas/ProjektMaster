@@ -1,17 +1,33 @@
-package userInterface.addProductInterface;
+package userInterface.editProductInterface;
 
-import java.awt.Label;
 import java.lang.Exception;
+import start.Main;
 import java.util.ArrayList;
 
+import database.singleProduct.Product;
+
 @SuppressWarnings("serial")
-public class AddProduct extends Interface {
+public class EditProduct extends Interface {
 	
 	 public ArrayList<Integer> Fehlermeldungen = new ArrayList<Integer>();
 	// view of the window
-	public AddProduct (){
+	public EditProduct (){
 		super();	
-	} // addProduct	
+	} // addProduct
+	
+	public void editProduct(Product p) {
+		
+		int index = 0;//TODO find real Index of Product
+		 
+		quantityTF.setText(Main.List.databaseAsString.get(index*6));
+		weightTF.setText(Main.List.databaseAsString.get(index*6+1));
+		quantityTF.setText(Main.List.databaseAsString.get(index*6+2));
+		stocknumberTF.setText(Main.List.databaseAsString.get(index*6+3));
+		priceTF.setText(Main.List.databaseAsString.get(index*6+4));
+		newCategoryTF.setText(Main.List.databaseAsString.get(index*6+5));
+		addProductToShelf();
+		//TODO delete Product from Database if Fehlermeldungen.empty()
+	}
 	
 	public void addProductToShelf() {
      	
@@ -30,7 +46,7 @@ public class AddProduct extends Interface {
 		stocknumberFM.setText(""); 
 		quantityFM.setText("");
 		 	   
-
+		//TODO Bug Check + include more Error warnings
  	    //descriptionOK
  	    int desc = checkProductname(name);
  	    if (desc == 1) {Fehlermeldungen.add(11);}//Input to Long/Small
@@ -64,7 +80,7 @@ public class AddProduct extends Interface {
 
 
 
-
+ 	    //TODO Weight as KG in weight String but uses decigramm in Shelf
  		try {
 			if (name.length()==0|category.length()==0|number.length()==0|price.length()==0|weight.length()==0|quantity.length()==0) {
 				leereEingabeFM.setText("Bitte alle Felder ausfüllen!");

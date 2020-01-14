@@ -107,7 +107,7 @@ public class Layout extends JPanel{
 	}
 	
 	public void refreshTable() {
-		//table.addCollum(0);
+		
 		table.setNewDatabase();
 	}
 }

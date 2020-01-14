@@ -21,7 +21,8 @@ public class DataTable extends JTable{
     
 	public DataTable() {
 		super(model);
-		setNewDatabase();	
+		setNewDatabase();
+		//TODO Change double click on List opens EditProduct Frame
     }
 	
 	
