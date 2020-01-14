@@ -116,7 +116,7 @@ public class EditProduct extends Interface {
  	 					
 
  		} catch (Exception exception) {
- 			new exeptions.Exception(exception.getMessage());
+ 			new exceptions.Exception(exception.getMessage());
  		} 
 	}
 	

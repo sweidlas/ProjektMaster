@@ -13,11 +13,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
-class Interface extends Frame implements ActionListener {
+class Interface extends Frame{
 	
 
 	public Button deleteCategory;
-	public Button okay;
+	public Button addCat;
+	List list;
+	public TextField addCategoryTF;
 	
 	public Interface() {
 		super ("Kategorien"); // set title
@@ -46,22 +48,16 @@ class Interface extends Frame implements ActionListener {
 		myGBC.gridy = 6;
 		myGBC.gridwidth = 1; 
 		myGBC.gridheight = 1; 
-		okay = new Button ("Okay");
-		okay.setBackground(Color.green);
-		myGBL.setConstraints(okay, myGBC);
-		add(okay);
+		addCat = new Button ("Hinzufürgen");
+		addCat.setBackground(Color.green);
+		myGBL.setConstraints(addCat, myGBC);
+		add(addCat);
 	
 		myGBC.gridx = 0;
 		myGBC.gridy = 0;
 		myGBC.gridwidth = 2; // width of the element
 		myGBC.gridheight = 2; // height of the element
-		List list = new List (6);
-		list.add("Kategorie1"); // example for the space for the categories
-		list.add("Kategorie2");
-		list.add("Kategorie3");
-		list.add("Kategorie4");
-		list.add("Kategorie5");
-		list.add("Kategorie6");
+		list = new List ();
 		myGBL.setConstraints(list, myGBC);
 		add(list);
 		
@@ -78,22 +74,10 @@ class Interface extends Frame implements ActionListener {
 		myGBC.gridy = 6;
 		myGBC.gridwidth = 2; 
 		myGBC.gridheight = 1;
-		TextField addCategoryTF = new TextField (3);
+		addCategoryTF = new TextField (3);
 		myGBL.setConstraints(addCategoryTF, myGBC);
 		add(addCategoryTF);
 		
 		pack();
-	}
-
-	
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
-		if(e.getSource() == deleteCategory || e.getSource() == okay )
-		{
-			this.dispose();
-		}
-		
 	}
 }

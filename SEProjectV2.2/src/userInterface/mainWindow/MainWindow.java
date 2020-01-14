@@ -10,8 +10,8 @@ public class MainWindow extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	Layout mainLayout;
-	userInterface.editProductInterface.EditProduct addI;
-	userInterface.changeCategory.ChangeCategory eddI;
+	userInterface.editProductInterface.EditProduct editProduct;
+	userInterface.changeCategory.ChangeCategory chCategory;
 	
 	public MainWindow() {
 		super("penfactory Lagerverwaltung");
@@ -38,26 +38,32 @@ public class MainWindow extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent event) {
 
 		if(event.getSource() == mainLayout.addProduct){
-			addI = new userInterface.editProductInterface.EditProduct();
-			addI.addProduct.addActionListener(this);
+			editProduct = new userInterface.editProductInterface.EditProduct();
+			editProduct.addProduct.addActionListener(this);
 			
 		} else if(event.getSource() == mainLayout.editCategory) {
-			eddI = new userInterface.changeCategory.ChangeCategory();
-			eddI.deleteCategory.addActionListener(this);
-			eddI.okay.addActionListener(this);
+			chCategory = new userInterface.changeCategory.ChangeCategory();
+			chCategory.deleteCategory.addActionListener(this);
+			chCategory.addCat.addActionListener(this);
 			
 		} else if(event.getSource() == mainLayout.search) {
 			//TODO start	
 			
-		} else if(event.getSource() == addI.addProduct) {
-			addI.addProductToShelf();
+		} else if(event.getSource() == editProduct.addProduct) {
+			editProduct.addProductToShelf();
 			mainLayout.refreshTable();
 			
 
-		} else if(event.getSource() == eddI.deleteCategory) {
+		} else if(event.getSource() == chCategory.deleteCategory) {
+			try {
+				start.Main.List.addCategory(chCategory.addCategoryTF.getText());
+			} catch (Exception e) {
+				new exceptions.Exception(e.getMessage());
+			}
 			//TODO deleteCategory
 			
-		} else if(event.getSource() == eddI.okay) {
+		} else if(event.getSource() == chCategory.addCat) {
+			chCategory.refreshList();
 			//TODO whatever this Button does
 			
 		}
