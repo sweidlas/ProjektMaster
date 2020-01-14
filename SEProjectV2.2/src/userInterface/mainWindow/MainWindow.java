@@ -10,14 +10,14 @@ public class MainWindow extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	Layout mainLayout;
-	userInterface.addProductInterface.AddProduct addI;
+	userInterface.editProductInterface.EditProduct addI;
 	userInterface.changeCategory.ChangeCategory eddI;
 	
 	public MainWindow() {
 		super("penfactory Lagerverwaltung");
 		setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(10000,10000);
+		this.setSize(10000,10000);//=always full screen
 		
 		Container c = getContentPane();
 		
@@ -38,7 +38,7 @@ public class MainWindow extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent event) {
 
 		if(event.getSource() == mainLayout.addProduct){
-			addI = new userInterface.addProductInterface.AddProduct();
+			addI = new userInterface.editProductInterface.EditProduct();
 			addI.addProduct.addActionListener(this);
 			
 		} else if(event.getSource() == mainLayout.editCategory) {
@@ -50,21 +50,10 @@ public class MainWindow extends JFrame implements ActionListener{
 			//TODO start	
 			
 		} else if(event.getSource() == addI.addProduct) {
-			//TODO Use Textfields to Create Product
+			addI.addProductToShelf();
+			mainLayout.refreshTable();
+			
 
-			//Product p = new	Product(name, weight, amount, price, number, category);
-			//int ShelfNr = number/1000;
-			//TODO Use Johannes Tests
-				
-			try {
-			//start.Main.List.addProduct(ShelfNr,p); 
-			start.Main.List.reload();
-			System.out.println(start.Main.List.databaseAsString.toString());
-			addI.dispose();	
-	
-			} catch (Exception exception) {
-				new exeptions.Exception(exception.getMessage());
-				}
 		} else if(event.getSource() == eddI.deleteCategory) {
 			//TODO deleteCategory
 			

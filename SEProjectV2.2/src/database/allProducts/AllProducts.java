@@ -27,7 +27,9 @@ public class AllProducts { //The Class of the Full Database
 			testNewProduct(p);// Test Syntax
 			shelfs.get(shelfNr).addProduct(p);//Weight Tests in Shelfs>ShelfTests Class
 			
-		} catch (Exception e) {}
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
 	}
 	
 	public void changeProduct(Product oldVersion, Product newVersion, int oldShelfNr, int newShelfNr) throws Exception {
@@ -52,11 +54,6 @@ public class AllProducts { //The Class of the Full Database
 	private void loadFile() throws Exception {
 		//TODO
 	}
-	
-	
-	
-	
-	
 	
 	/*public void save() {				
 		// for testing

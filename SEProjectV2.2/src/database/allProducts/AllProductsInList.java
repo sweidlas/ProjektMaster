@@ -1,6 +1,7 @@
 package database.allProducts;
 
 import java.util.ArrayList;
+import database.singleProduct.Product;
 
 public class AllProductsInList extends AllProducts{ // Class for List Output
 	
@@ -24,6 +25,15 @@ public class AllProductsInList extends AllProducts{ // Class for List Output
 	public void reload() {
 		createStringArray();
 		
+	}
+	
+	public void addProduct(int shelfNr,Product p) throws Exception{
+		try {
+			super.addProduct(shelfNr, p);
+			createStringArray();
+		}catch(Exception e) {
+			new exeptions.Exception(e.getMessage());
+		}
 	}
 	
 	private void createStringArray() {

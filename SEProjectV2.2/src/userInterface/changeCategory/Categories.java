@@ -3,6 +3,7 @@ package userInterface.changeCategory;
 import java.util.ArrayList;
 
 public class Categories {
+	//TODO use Categories in Database and Interface
 
 	public static ArrayList<String> CategoryList = new ArrayList<String>();
 	String CategoryName;
