@@ -13,7 +13,7 @@ import java.awt.TextField;
 public class Interface extends Frame {
 	   public Button addProduct;
 	   TextField descriptionTF, weightTF, priceTF, newCategoryTF, stocknumberTF, quantityTF;
-	   Label leereEingabeFM, descriptionFM, weightFM, priceFM, newCategoryFM, stocknumberFM, quantityFM;
+	   protected Label leereEingabeFM, descriptionFM, weightFM, priceFM, newCategoryFM, stocknumberFM, quantityFM;
 	   GridBagConstraints myGBC;
 	   GridBagLayout myGBL;
 

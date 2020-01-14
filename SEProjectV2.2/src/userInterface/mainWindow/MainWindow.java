@@ -17,7 +17,7 @@ public class MainWindow extends JFrame implements ActionListener{
 		super("penfactory Lagerverwaltung");
 		setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(10000,10000);
+		this.setSize(10000,10000);//=always full screen
 		
 		Container c = getContentPane();
 		
@@ -50,21 +50,10 @@ public class MainWindow extends JFrame implements ActionListener{
 			//TODO start	
 			
 		} else if(event.getSource() == addI.addProduct) {
-			//TODO Use Textfields to Create Product
+			addI.addProductToShelf();
+			mainLayout.refreshTable();
+			
 
-			//Product p = new	Product(name, weight, amount, price, number, category);
-			//int ShelfNr = number/1000;
-			//TODO Use Johannes Tests
-				
-			try {
-			//start.Main.List.addProduct(ShelfNr,p); 
-			start.Main.List.reload();
-			System.out.println(start.Main.List.databaseAsString.toString());
-			addI.dispose();	
-	
-			} catch (Exception exception) {
-				new exeptions.Exception(exception.getMessage());
-				}
 		} else if(event.getSource() == eddI.deleteCategory) {
 			//TODO deleteCategory
 			

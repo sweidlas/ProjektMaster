@@ -14,6 +14,8 @@ public class Layout extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
 	public Button addProduct, search, editCategory; 
+	DataTable table = new DataTable();
+	JScrollPane pane;
 	
 	Layout(){
 		
@@ -78,8 +80,8 @@ public class Layout extends JPanel{
 		myGBC.gridwidth = 6;
 		myGBC.gridheight = 6; 
 		myGBC.fill = GridBagConstraints.BOTH;
-		JScrollPane table = new JScrollPane(new DataTable());
-		add(table,myGBC);
+		pane = new JScrollPane(table);
+		add(pane,myGBC);
 		
 		//GridBag solution
 		myGBC.gridx = 0;
@@ -102,7 +104,10 @@ public class Layout extends JPanel{
 		myGBC.gridx = 5; 
 		sh = new Label (shString);
 		add(sh,myGBC);
-
+	}
 	
+	public void refreshTable() {
+		//table.addCollum(0);
+		table.setNewDatabase();
 	}
 }
