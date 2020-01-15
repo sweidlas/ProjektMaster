@@ -29,25 +29,25 @@ public class MainWindow extends JFrame implements ActionListener{
 			@Override
 			// when new symbol is typed
 			public void insertUpdate(DocumentEvent e) {
-				search(searchfield.getText());
+				search(termTF.getText());
 			}
 
 			@Override
 			// when symbol is deleted
 			public void removeUpdate(DocumentEvent e) {
-				search(searchfield.getText());
+				search(termTF.getText());
 			}
 
 			@Override
 			// other changes(pasted text, etc.)
 			public void changedUpdate(DocumentEvent e) {
-				search(searchfield.getText());
+				search(termTF.getText());
 			}
 
 			public void search(String str) {
 				// show all rows
 				if (str.length() == 0) {
-					table.sorter.setRowFilter(null);
+					mainLayout.table.sorter.setRowFilter(null);
 				} 
 				// set filter to the string, case insensitive
 				else {
