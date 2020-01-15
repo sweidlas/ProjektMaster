@@ -5,6 +5,7 @@ import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import javax.swing.event.DocumentEvent;
 
 public class MainWindow extends JFrame implements ActionListener{
 
@@ -17,7 +18,7 @@ public class MainWindow extends JFrame implements ActionListener{
 		super("penfactory Lagerverwaltung");
 		setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(10000,10000);//=always full screen
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
 		Container c = getContentPane();
 		
@@ -83,10 +84,7 @@ public class MainWindow extends JFrame implements ActionListener{
 			changeCategory.deleteCategory.addActionListener(this);
 			changeCategory.addCat.addActionListener(this);
 			
-		} else if(event.getSource() == mainLayout.search) { //Search in Table (Probably not used)
-			//TODO start		
-		}
-		
+
 		//editProduct Events
 		if (editProduct != null) {
 			if(event.getSource() == editProduct.addProduct) { //Add Product to Database&Table
