@@ -1,4 +1,4 @@
-package userInterface 
+package userInterface.MainWIndow;
 
 import javax.swing.text.*;
 import javax.swing.*;
