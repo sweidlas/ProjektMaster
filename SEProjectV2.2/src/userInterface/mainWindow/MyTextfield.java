@@ -31,7 +31,7 @@ public class MyTextField extends JTextField{
 	
 	MyTextField(int x){
 		super(x);
-		setDocument(new FixedSizeDocument(int x));
+		setDocument(new FixedSizeDocument(256));
     }
 	
 	void remove_all() {
