@@ -2,18 +2,17 @@ package userInterface.changeCategory;
 
 import java.awt.Button;
 import java.awt.Color;
-import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Label;
 import java.awt.List;
 import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
-class Interface extends Frame{
+public class Interface extends JFrame{
 	
 
 	public Button deleteCategory;
@@ -30,7 +29,6 @@ class Interface extends Frame{
 		setVisible (true);
 		
 		// generally
-		myGBC.fill = GridBagConstraints.HORIZONTAL;
 		myGBC.insets = new Insets(5,5,5,5) ; // distance to line: 5 above, 5 left, 5 below, 5 right 
 		
 		// Button deleteProduct
@@ -41,7 +39,7 @@ class Interface extends Frame{
 		deleteCategory = new Button ("löschen");
 		deleteCategory.setBackground(Color.red);
 		myGBL.setConstraints(deleteCategory, myGBC);
-		add(deleteCategory);
+		add(deleteCategory, myGBC);
 		
 		// Button okay
 		myGBC.gridx = 3;
@@ -51,7 +49,7 @@ class Interface extends Frame{
 		addCat = new Button ("Hinzufürgen");
 		addCat.setBackground(Color.green);
 		myGBL.setConstraints(addCat, myGBC);
-		add(addCat);
+		add(addCat, myGBC);
 	
 		myGBC.gridx = 0;
 		myGBC.gridy = 0;
@@ -59,7 +57,7 @@ class Interface extends Frame{
 		myGBC.gridheight = 2; // height of the element
 		list = new List ();
 		myGBL.setConstraints(list, myGBC);
-		add(list);
+		add(list, myGBC);
 		
 		// add category
 		myGBC.gridx = 0;
@@ -68,7 +66,7 @@ class Interface extends Frame{
 		myGBC.gridheight = 1; 
 		Label addCategory = new Label ("Kategorie hinzufügen:");
 		myGBL.setConstraints(addCategory, myGBC);
-		add(addCategory);
+		add(addCategory, myGBC);
 		
 		myGBC.gridx = 0;
 		myGBC.gridy = 6;
@@ -76,7 +74,7 @@ class Interface extends Frame{
 		myGBC.gridheight = 1;
 		addCategoryTF = new TextField (3);
 		myGBL.setConstraints(addCategoryTF, myGBC);
-		add(addCategoryTF);
+		add(addCategoryTF, myGBC);
 		
 		pack();
 	}

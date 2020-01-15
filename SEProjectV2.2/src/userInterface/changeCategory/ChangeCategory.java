@@ -1,7 +1,8 @@
 package userInterface.changeCategory;
 
-import java.awt.TextField;
 import java.util.ArrayList;
+
+import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
 public class ChangeCategory extends Interface{
@@ -9,6 +10,9 @@ public class ChangeCategory extends Interface{
 	// view of the window
 	public ChangeCategory (){
 		super();
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setSize(300, 250);
+		this.setLocationRelativeTo(null);//Middle of screen
 	} 
 	
 	public void refreshList() {

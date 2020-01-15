@@ -4,7 +4,6 @@ import java.lang.Exception;
 import start.Main;
 import java.util.ArrayList;
 
-import database.singleProduct.Product;
 
 @SuppressWarnings("serial")
 public class EditProduct extends Interface {
@@ -12,12 +11,13 @@ public class EditProduct extends Interface {
 	 public ArrayList<Integer> Fehlermeldungen = new ArrayList<Integer>();
 	// view of the window
 	public EditProduct (){
-		super();	
+		super();
+		this.setDefaultCloseOperation(Interface.DISPOSE_ON_CLOSE);
+		this.setLocationRelativeTo(null);//Middle of screen
+
 	} // addProduct
 	
-	public void editProduct(Product p) {
-		
-		int index = 0;//TODO find real Index of Product
+	public void editProduct(int index) {
 		 
 		quantityTF.setText(Main.List.databaseAsString.get(index*6));
 		weightTF.setText(Main.List.databaseAsString.get(index*6+1));
@@ -76,8 +76,6 @@ public class EditProduct extends Interface {
 
 
 
- 	    System.out.println("Fehlermeldungen :" + Fehlermeldungen);
-
 
 
  	    //TODO Weight as KG in weight String but uses decigramm in Shelf
@@ -94,14 +92,14 @@ public class EditProduct extends Interface {
 
 	 		         if (Fehlermeldungen.contains(11)) {descriptionFM.setText("zu viele Zeichen");} //Productdescription contains more than 256 characters
 	 		         else if (Fehlermeldungen.contains(12)) {descriptionFM.setText("falsches Zeichen");}
-	 		           else descriptionFM.setText(""); 
+	 		        
 
 	 		         if (Fehlermeldungen.contains(21)) {newCategoryFM.setText("zu viele Zeichen");} //new Category contains more than 256 characters
 	 		         else if (Fehlermeldungen.contains(22)) {newCategoryFM.setText("falsches Zeichen");}
-	 		           else newCategoryFM.setText("");
+	 		    
 
 	 		         if (Fehlermeldungen.contains(31)) {stocknumberFM.setText("6- stellige Zahl");}
-	 		         else if (Fehlermeldungen.contains(31)) {stocknumberFM.setText("keine Buchstaben");} 
+	 		         else if (Fehlermeldungen.contains(32)) {stocknumberFM.setText("keine Buchstaben");} 
 	 		           else stocknumberFM.setText("");
 
 	 		         if (Fehlermeldungen.contains(41)) {priceFM.setText("keine Buchstaben");} else priceFM.setText("");;
@@ -118,6 +116,7 @@ public class EditProduct extends Interface {
  		} catch (Exception exception) {
  			new exceptions.Exception(exception.getMessage());
  		} 
+ 		this.descriptionFM.setText("zu viele Zeichen");
 	}
 	
 

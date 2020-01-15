@@ -2,15 +2,16 @@ package userInterface.editProductInterface;
 
 import java.awt.Button;
 import java.awt.Color;
-import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Label;
 import java.awt.TextField;
 
+import javax.swing.JFrame;
+
 @SuppressWarnings("serial")
-public class Interface extends Frame {
+public class Interface extends JFrame {
 	   public Button addProduct;
 	   protected TextField descriptionTF, weightTF, priceTF, newCategoryTF, stocknumberTF, quantityTF;
 	   protected Label leereEingabeFM, descriptionFM, weightFM, priceFM, newCategoryFM, stocknumberFM, quantityFM;
@@ -28,7 +29,6 @@ public class Interface extends Frame {
 	     setVisible(true); 
 
 	     // generally
-	     myGBC.fill = GridBagConstraints.HORIZONTAL;
 	     myGBC.insets = new Insets(10,10,20,20) ; // distance to line: 5 above, 5 left, 5 below, 5 right 
 
 	     // Button addProduct
@@ -45,7 +45,7 @@ public class Interface extends Frame {
 	     myGBC.gridy = 10;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
-	     leereEingabeFM = new Label ("");
+	     leereEingabeFM = new Label ("                                               ");
 	     myGBL.setConstraints(leereEingabeFM, myGBC);
 	     add(leereEingabeFM);
 
@@ -70,7 +70,7 @@ public class Interface extends Frame {
 	     myGBC.gridy = 0;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
-	     descriptionFM = new Label ("");
+	     descriptionFM = new Label ("                                               ");
 	     myGBL.setConstraints(descriptionFM, myGBC);
 	     add(descriptionFM);
 
@@ -95,7 +95,7 @@ public class Interface extends Frame {
 	     myGBC.gridy = 1;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
-	     weightFM = new Label ("");
+	     weightFM = new Label ("                                               ");
 	     myGBL.setConstraints(weightFM, myGBC);
 	     add(weightFM);
 
@@ -120,7 +120,7 @@ public class Interface extends Frame {
 	     myGBC.gridy = 2;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
-	     priceFM = new Label ("");
+	     priceFM = new Label ("                                               ");
 	     myGBL.setConstraints(priceFM, myGBC);
 	     add(priceFM);
 
@@ -154,7 +154,7 @@ public class Interface extends Frame {
 	     myGBC.gridy = 4;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
-	     newCategoryFM = new Label ("");
+	     newCategoryFM = new Label ("                                               ");
 	     myGBL.setConstraints(newCategoryFM, myGBC);
 	     add(newCategoryFM);
 
@@ -179,7 +179,7 @@ public class Interface extends Frame {
 	     myGBC.gridy = 5;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
-	     stocknumberFM = new Label ("");
+	     stocknumberFM = new Label ("                                               ");
 	     myGBL.setConstraints(stocknumberFM, myGBC);
 	     add(stocknumberFM);
 
@@ -204,18 +204,10 @@ public class Interface extends Frame {
 	     myGBC.gridy = 6;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
-	     quantityFM = new Label (""); // get.Quantity
+	     quantityFM = new Label ("                                               "); // get.Quantity
 	     myGBL.setConstraints(quantityFM, myGBC);
 	     add(quantityFM);
 
 	     pack();
 	   }
-	   
-
-//	     this.addWindowListener(new WindowAdapter() {    //close window without saving
-//	       public void windowClosing(WindowEvent we) {  
-//	         dispose();  
-//	         } 
-//	     });
-	   
 }

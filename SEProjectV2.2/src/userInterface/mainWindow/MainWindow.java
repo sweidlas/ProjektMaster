@@ -11,7 +11,7 @@ public class MainWindow extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	Layout mainLayout;
 	userInterface.editProductInterface.EditProduct editProduct;
-	userInterface.changeCategory.ChangeCategory chCategory;
+	userInterface.changeCategory.ChangeCategory changeCategory;
 	
 	public MainWindow() {
 		super("penfactory Lagerverwaltung");
@@ -37,37 +37,42 @@ public class MainWindow extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent event) {
 
-		if(event.getSource() == mainLayout.addProduct){
+		//mainFrame Events
+		if(event.getSource() == mainLayout.addProduct){ //Opens Add Product Interface
 			editProduct = new userInterface.editProductInterface.EditProduct();
 			editProduct.addProduct.addActionListener(this);
 			
-		} else if(event.getSource() == mainLayout.editCategory) {
-			chCategory = new userInterface.changeCategory.ChangeCategory();
-			chCategory.deleteCategory.addActionListener(this);
-			chCategory.addCat.addActionListener(this);
+		} else if(event.getSource() == mainLayout.editCategory) { //Opens changeCategory Interface
+			changeCategory = new userInterface.changeCategory.ChangeCategory();
+			changeCategory.deleteCategory.addActionListener(this);
+			changeCategory.addCat.addActionListener(this);
 			
-		} else if(event.getSource() == mainLayout.search) {
-			//TODO start	
-			
-		} else if(event.getSource() == editProduct.addProduct) {
-			editProduct.addProductToShelf();
-			mainLayout.refreshTable();
-			
-
-		} else if(event.getSource() == chCategory.deleteCategory) {
-			try {
-				start.Main.List.addCategory(chCategory.addCategoryTF.getText());
-			} catch (Exception e) {
-				new exceptions.Exception(e.getMessage());
-			}
-			//TODO deleteCategory
-			
-		} else if(event.getSource() == chCategory.addCat) {
-			chCategory.refreshList();
-			//TODO whatever this Button does
-			
+		} else if(event.getSource() == mainLayout.search) { //Search in Table (Probably not used)
+			//TODO start		
 		}
 		
+		//editProduct Events
+		if (editProduct != null) {
+			if(event.getSource() == editProduct.addProduct) { //Add Product to Database&Table
+				editProduct.addProductToShelf();
+				mainLayout.refreshTable();
+			}	
+		} 
+
+		//changeCategory Events
+		if (changeCategory != null) {
+			if(event.getSource() == changeCategory.deleteCategory) { //Delete Category to Database
+			//TODO deleteCategory
+			} else if(event.getSource() == changeCategory.addCat) { //Add Category
+				try {
+					start.Main.List.addCategory(changeCategory.addCategoryTF.getText());
+				} catch (Exception e) {
+					new exceptions.Exception(e.getMessage());
+				}
+			}
+			changeCategory.refreshList();	
+		}
+		System.out.println(event.getActionCommand());
 	}
 	
 }
