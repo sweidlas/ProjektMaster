@@ -4,6 +4,22 @@ import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+//TableModel that returns the actual class and not String
+//May or may not be needed
+class MyModel extends DefaultTableModel{
+
+	private static final long serialVersionUID = 1L;
+	//TODO Insert actual class order
+	Class[] columnClass= new Class[] {String.class, Integer.class, String.class, Integer.class, Float.class};
+	
+	MyModel(String[] columNames, int x){
+		super(columNames, x);
+	}
+	@Override
+	public Class getColumnClass(int column){
+		return columnClass[column];
+	}
+}
 
 public class DataTable extends JTable{
 	
@@ -15,9 +31,10 @@ public class DataTable extends JTable{
 			"Kategorie",
 			"Stückpreis(in Cent)",
 			"Lagernummer",
-			"Lagernummer"};
+			"Gewicht"};
 	
-	static DefaultTableModel model = new DefaultTableModel( columNames, 0 );
+	static Mymodel model= new MyModel( columNames, 0 );
+	ArrayList<JCheckBox> searchCheckboxes = new ArrayList<>();
     
 	public DataTable() {
 		super(model);
@@ -35,7 +52,36 @@ public class DataTable extends JTable{
 				showMe[kk] = databaseAsString.get(ii*6+kk);
 			}
 			model.addRow(showMe);
-		}		
+		}
+	@Override	
+	public boolean isCellEditable(int row, int column) {
+	       return false;
+	    }
 	}
+	
+	@Override
+	// returns selected checkboxes
+	public int[] getSelectedColumns() {
+		ArrayList<Integer> indexesOfSelected = new ArrayList<Integer>();
+		for (int i = 0; i < this.searchCheckboxes.size(); ++i) {
+			JCheckBox box = this.searchCheckboxes.get(i);
+			if (box.isSelected()) {
+				indexesOfSelected.add(i);
+			}
+		}
+		
+		int[] rv = new int[indexesOfSelected.size()];
+		// java is stupid
+		for (int i = 0; i < rv.length; i++) {
+			rv[i] = indexesOfSelected.get(i);
+		}
+		return rv;
+
+	}
+
+	ArrayList<JCheckBox> getCheckboxes() {
+		return this.searchCheckboxes;
+	}
+	
 }
  
