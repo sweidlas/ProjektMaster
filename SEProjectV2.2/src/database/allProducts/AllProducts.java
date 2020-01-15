@@ -8,7 +8,7 @@ import database.singleProduct.Product;
 public class AllProducts { //The Class of the Full Database
 	
 	protected ArrayList<Shelf> shelfs = new ArrayList<Shelf>(); //TODO change to private (use getter/setter)
-	public static ArrayList<String> CategoryList = new ArrayList<String>();
+	public static ArrayList<String> categoryList = new ArrayList<String>();
 	String CategoryName;
 	
 	public AllProducts() {
@@ -24,15 +24,18 @@ public class AllProducts { //The Class of the Full Database
 	}
 	
 	public void addProduct(int shelfNr, Product p) throws Exception{
-
-		try{
-			testNewProduct(p);// Test Syntax
-			addCategory(p.getName());
+		//TODO does not Test if similar Product Exists > Test at least Number
+		try{ 
+			testCategory(p.getName());
 			shelfs.get(shelfNr).addProduct(p);//Weight Tests in Shelfs>ShelfTests Class
 			
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
+	}
+	
+	public void removeProduct(int shelfNr, Product p) throws Exception{
+		
 	}
 	
 	public void changeProduct(Product oldVersion, Product newVersion, int oldShelfNr, int newShelfNr) throws Exception {
@@ -44,29 +47,28 @@ public class AllProducts { //The Class of the Full Database
 	}
 			
 	
-	
-	private Boolean testNewProduct(Product p) throws Exception{
-		
-		return true;
+	public void testCategory(String testMe) throws Exception{
+		if (!categoryList.contains(testMe)) {
+			throw new Exception("Kategorie exestiert nicht");
+		}
 	}
-	
 		
 	public void addCategory(String name) throws Exception{
-		if (CategoryList.contains(name)) {
+		if (categoryList.contains(name)) {
 			throw new Exception("Category already used");
-		} else {CategoryList.add(name);}
+		} else {categoryList.add(name);}
 	}
 	
 	public void deleteCategory(String category){
-		if (CategoryList.contains(category)) {
-			CategoryList.remove(category);
+		if (categoryList.contains(category)) {
+			categoryList.remove(category);
 		} else {
 			System.out.println("Category doesn't exist!");//this should not be possible
 		}
 	}
 	
 	public ArrayList<String> getCategoryList() {
-		return CategoryList;
+		return categoryList;
 	}
 	
 	public void saveFile() {
