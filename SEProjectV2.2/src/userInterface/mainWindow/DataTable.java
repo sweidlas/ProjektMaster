@@ -34,6 +34,7 @@ public class DataTable extends JTable{
 			"Gewicht"};
 	
 	static Mymodel model= new MyModel( columNames, 0 );
+	ArrayList<JCheckBox> searchCheckboxes = new ArrayList<>();
     
 	public DataTable() {
 		super(model);
@@ -51,7 +52,36 @@ public class DataTable extends JTable{
 				showMe[kk] = databaseAsString.get(ii*6+kk);
 			}
 			model.addRow(showMe);
-		}		
+		}
+	@Override	
+	public boolean isCellEditable(int row, int column) {
+	       return false;
+	    }
 	}
+	
+	@Override
+	// returns selected checkboxes
+	public int[] getSelectedColumns() {
+		ArrayList<Integer> indexesOfSelected = new ArrayList<Integer>();
+		for (int i = 0; i < this.searchCheckboxes.size(); ++i) {
+			JCheckBox box = this.searchCheckboxes.get(i);
+			if (box.isSelected()) {
+				indexesOfSelected.add(i);
+			}
+		}
+		
+		int[] rv = new int[indexesOfSelected.size()];
+		// java is stupid
+		for (int i = 0; i < rv.length; i++) {
+			rv[i] = indexesOfSelected.get(i);
+		}
+		return rv;
+
+	}
+
+	ArrayList<JCheckBox> getCheckboxes() {
+		return this.searchCheckboxes;
+	}
+	
 }
  
