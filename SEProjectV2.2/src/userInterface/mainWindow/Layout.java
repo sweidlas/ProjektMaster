@@ -27,35 +27,27 @@ public class Layout extends JPanel{
 		myGBC.weightx = 1;
 		myGBC.weighty = 1;
 		
-		// button search
+		// button add product
 		myGBC.gridx = 5;
 		myGBC.gridy = 0;
 		myGBC.gridwidth = 1; 
 		myGBC.gridheight = 1; 
 		myGBC.fill = GridBagConstraints.BOTH;
-		search = new Button ("Produkt Suchen");
-		search.setBackground(Color.cyan);
-		add(search,myGBC);
-		
-		// button addProduct
-		myGBC.gridx = 5;
-		myGBC.gridy = 1;
-		myGBC.gridwidth = 1; // width of the element
-		myGBC.gridheight = 1; // height of the element
 		myGBC.fill = GridBagConstraints.BOTH;
 		addProduct = new Button ("Produkt hinzufügen");
 		addProduct.setBackground(Color.green);
 		add(addProduct,myGBC);
 		
-		// button edit category
+		// button edit Category
 		myGBC.gridx = 5;
-		myGBC.gridy = 2;
-		myGBC.gridwidth = 1;
-		myGBC.gridheight = 1; 
-		myGBC.fill = GridBagConstraints.BOTH;
+		myGBC.gridy = 1;
+		myGBC.gridwidth = 1; // width of the element
+		myGBC.gridheight = 1; // height of the element
 		editCategory = new Button ("Kategorien bearbeiten");
 		editCategory.setBackground(Color.green);
 		add(editCategory,myGBC);
+		
+
 		
 		// term
 		myGBC.gridx = 0;
