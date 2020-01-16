@@ -19,30 +19,34 @@ public class EditProduct extends Interface {
 	
 	public void editProduct(int index) {
 		 
-		quantityTF.setText(Main.List.databaseAsString.get(index*6));
-		weightTF.setText(Main.List.databaseAsString.get(index*6+1));
-		quantityTF.setText(Main.List.databaseAsString.get(index*6+2));
-		stocknumberTF.setText(Main.List.databaseAsString.get(index*6+3));
-		priceTF.setText(Main.List.databaseAsString.get(index*6+4));
-		newCategoryTF.setText(Main.List.databaseAsString.get(index*6+5));
-		addProductToShelf();
+	
+//		Product p =  index
+//		descriptionTF.setText(p.getName());
+//		weightTF.setText(p.getWeight());
+//		quantityTF.setText(p.getAmount());
+//		stocknumberTF.setText(p.getNumber());
+//		priceTF.setText(p.getPrice());
+//		newCategoryTF.setText(p.getCategory());
+//		addProductToShelf();
 		//TODO delete Product from Database if Fehlermeldungen.empty()
 	}
 	
 	public void addProductToShelf() {
+		
+		Fehlermeldungen.clear();
      	
-		String name = quantityTF.getText();
+		String name = descriptionTF.getText();
 		String weight= weightTF.getText();
 		String quantity= quantityTF.getText();
 		String number= stocknumberTF.getText();
 		String price= priceTF.getText();
-		String category= newCategoryTF.getText();
+		String category= categories.getSelectedItem();
 		
 		leereEingabeFM.setText("");
 		descriptionFM.setText("");
 		weightFM.setText(""); 
 		priceFM.setText(""); 
-		newCategoryFM.setText(""); 
+		//newCategoryFM.setText(""); 
 		stocknumberFM.setText(""); 
 		quantityFM.setText("");
 		 	   
@@ -53,9 +57,9 @@ public class EditProduct extends Interface {
  	    if (desc == 2) {Fehlermeldungen.add(12);}//wrong character
 
  	    //newCategoryOK   
- 	    int cat = checkCategoryname(category);
- 	    if (cat == 1) {Fehlermeldungen.add(21);}//Input to Long/Small
- 	    if (cat == 2) {Fehlermeldungen.add(22);}//wrong character 
+// 	    int cat = checkCategoryname(category);
+// 	    if (cat == 1) {Fehlermeldungen.add(21);}//Input to Long/Small
+// 	    if (cat == 2) {Fehlermeldungen.add(22);}//wrong character 
 
  	    //stocknumberOK
  	    int sto = checkStocknumber(number);
@@ -75,7 +79,7 @@ public class EditProduct extends Interface {
  	    if (qua == 1) {Fehlermeldungen.add(61);}//Wrong Input
 
 
-
+ 	    System.out.println(Fehlermeldungen);
 
 
  	    //TODO Weight as KG in weight String but uses decigramm in Shelf
@@ -83,10 +87,9 @@ public class EditProduct extends Interface {
 			if (name.length()==0|category.length()==0|number.length()==0|price.length()==0|weight.length()==0|quantity.length()==0) {
 				leereEingabeFM.setText("Bitte alle Felder ausfüllen!");
 			} else {
-				if (Fehlermeldungen.isEmpty()) {
-					database.singleProduct.Product p = new database.singleProduct.Product(name, weight, quantity, price, number, category);
-	 				int ShelfNr = Integer.parseInt(number)/1000;	
-	 				start.Main.List.addProduct(ShelfNr,p);
+				if (Fehlermeldungen.isEmpty()) {	
+					String[] newRow = {name, weight, quantity, price, number, category};
+	 				start.Main.table.model.addRow(newRow);
 	 				this.dispose();
 	 			}else {
 
@@ -100,13 +103,13 @@ public class EditProduct extends Interface {
 
 	 		         if (Fehlermeldungen.contains(31)) {stocknumberFM.setText("6- stellige Zahl");}
 	 		         else if (Fehlermeldungen.contains(32)) {stocknumberFM.setText("keine Buchstaben");} 
-	 		           else stocknumberFM.setText("");
+	 		           //else stocknumberFM.setText("");
 
-	 		         if (Fehlermeldungen.contains(41)) {priceFM.setText("keine Buchstaben");} else priceFM.setText("");;
+	 		         if (Fehlermeldungen.contains(41)) {priceFM.setText("keine Buchstaben");}
 
-	 		         if (Fehlermeldungen.contains(51)) {weightFM.setText("keine Buchstaben");} else weightFM.setText("");;
+	 		         if (Fehlermeldungen.contains(51)) {weightFM.setText("keine Buchstaben");} 
 
-	 		         if (Fehlermeldungen.contains(61)) {quantityFM.setText("keine Buchstaben");} else quantityFM.setText("");;
+	 		         if (Fehlermeldungen.contains(61)) {quantityFM.setText("keine Buchstaben");} 
 
 
 	 			}//End: all Labels for Wrong input
@@ -114,7 +117,8 @@ public class EditProduct extends Interface {
  	 					
 
  		} catch (Exception exception) {
- 			new exceptions.Exception(exception.getMessage());
+ 			leereEingabeFM.setText(exception.getMessage());
+ 			//new exceptions.Exception(exception.getMessage());
  		} 
  		this.descriptionFM.setText("zu viele Zeichen");
 	}
@@ -174,6 +178,7 @@ private int checkCategoryname(String name) {
   
 private int checkStocknumber(String Stocknumber) {//TODO Never uses Catch
  	    try {
+ 	    	Integer.parseInt(Stocknumber);
  	      if (Stocknumber.length() == 6) return 0;
  	      else return  1;// else: Zahl zu groß  
  	      }
@@ -189,6 +194,7 @@ private int checkPrice(String price)  {
  	      String a = teil[1];
 
  	      try {
+ 	    	Integer.parseInt(a);
  	        if ((i.length() <= 5) & (a.length() <= 2)) { return 0;}
  	        else return 1; //Number to Big/Small
  	      }
@@ -198,7 +204,9 @@ private int checkPrice(String price)  {
  	    }
  	    else if (teil.length == 1) {
  	      String u = teil[0];   
+ 	     
  	      try {
+ 	    	 Integer.parseInt(u);
  	        if (u.length() <= 5) { return 0;}
  	        else return 1;
  	      }
@@ -211,22 +219,26 @@ private int checkPrice(String price)  {
  	  }
   
 private static int checkWeight(String weight)  {  //Input in Kg
- 	    String[] teil = weight.split(",");
- 	    if (teil.length == 2) {
- 	      String i = teil[0];
- 	      String a = teil[1];
+ 	    String[] part = weight.split(",");
+ 	    if (part.length == 2) {
+ 	      String i = part[0];
+ 	      String a = part[1];
 
  	      try {
+ 	    	  Integer.parseInt(i);
+ 	    	  Integer.parseInt(a);
  	        if ((i.length() <= 5) & (a.length() <= 4)) { return 0;}
  	        else return 1; 
  	      }
- 	      catch(NumberFormatException ee) {
+ 	      catch(Exception ee) {
  	        return 1;
  	      }
  	    }
- 	    else if (teil.length == 1) {
- 	      String u = teil[0];   
+ 	    else if (part.length == 1) {
+ 	    	
+ 	      String u = part[0];   
  	      try {
+ 	    	 Integer.parseInt(u);
  	        if (u.length() <= 4 | u == "10000") { return 0;}
  	        else return 1;
  	      }
@@ -240,13 +252,14 @@ private static int checkWeight(String weight)  {  //Input in Kg
 
 private int checkQuantity(String quantity) {
  	    try {
+ 	    	
  	      int zahl2 = Integer.parseInt(quantity);
- 	      if (zahl2 <= 100000000) return 0;
- 	      else return 1;// else: Zahl zu groß 
+ 	      if (zahl2 <= 100000000) return 0;// else: Zahl zu groß 
  	      }
- 	    catch(NumberFormatException ee) {
- 	      return 1; //print: keine Buchstaben   
+ 	    catch(Exception ee) {
+ 	       //print: keine Buchstaben   
  	    }
+ 	   return 1;
  	  }
 
  	  //a

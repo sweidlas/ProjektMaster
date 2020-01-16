@@ -1,5 +1,5 @@
 package userInterface.editProductInterface;
-
+/*
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -7,6 +7,9 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Label;
 import java.awt.TextField;
+*/
+import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.JFrame;
 
@@ -17,7 +20,7 @@ public class Interface extends JFrame {
 	   protected Label leereEingabeFM, descriptionFM, weightFM, priceFM, newCategoryFM, stocknumberFM, quantityFM;
 	   GridBagConstraints myGBC;
 	   GridBagLayout myGBL;
-
+	   public Choice categories;
 
 
 	   public Interface() {
@@ -127,13 +130,30 @@ public class Interface extends JFrame {
 	     // category
 	     myGBC.gridx = 0;
 	     myGBC.gridy = 3;
-	     myGBC.gridwidth = 2; 
+	     myGBC.gridwidth = 1; 
 	     myGBC.gridheight = 1; 
 	     Label category = new Label ("Kategorie: ");
 	     myGBL.setConstraints(category, myGBC);
 	     add(category);
+	     
+	     myGBC.gridx = 1;
+	     myGBC.gridy = 3;
+	     myGBC.gridwidth = 2; 
+	     myGBC.gridheight = 1;
+	     categories = new Choice();
 
-	     // new category
+	     /*
+	   categories.add("Java");
+	   categories.add("C");
+	   categories.add("VB");
+	   categories.add("Perl");*/
+	  myGBL.setConstraints(categories, myGBC);
+	   for (String h: start.Main.categoryList) {
+		   categories.add(h);
+	   }
+	   add(categories);
+	// new category
+	   
 	     myGBC.gridx = 0;
 	     myGBC.gridy = 4;
 	     myGBC.gridwidth = 2; 
@@ -141,7 +161,7 @@ public class Interface extends JFrame {
 	     Label newCategory = new Label ("   neue Kategorie: ");
 	     myGBL.setConstraints(newCategory, myGBC);
 	     add(newCategory);
-
+	     /*
 	     myGBC.gridx = 2;
 	     myGBC.gridy = 4;
 	     myGBC.gridwidth = 2; 
@@ -156,7 +176,7 @@ public class Interface extends JFrame {
 	     myGBC.gridheight = 1; 
 	     newCategoryFM = new Label ("                                               ");
 	     myGBL.setConstraints(newCategoryFM, myGBC);
-	     add(newCategoryFM);
+	     add(newCategoryFM);*/
 
 	     // stocknumber
 	     myGBC.gridx = 0;

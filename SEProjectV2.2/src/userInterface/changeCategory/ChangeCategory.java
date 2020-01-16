@@ -15,24 +15,15 @@ public class ChangeCategory extends Interface{
 		this.setLocationRelativeTo(null);//Middle of screen
 	} 
 	
+
 	public void refreshList() {
-		ArrayList<String> cats = start.Main.List.getCategoryList();
-		list.removeAll();
-		for(int ii = 0; cats.size()>ii ; ii++) {
-			list.add(cats.get(ii));
+		this.list.removeAll();
+		for (int ii = 0; start.Main.categoryList.size()<ii;ii++) {
+			this.list.add(start.Main.categoryList.get(ii));
+			System.out.println(ii);
 		}
-
-	}
-
-	public void changeCategory(String newCategory, String oldCategory) {
+		//this.list.add(addCategoryTF.getText());
 		
-		try {
-			start.Main.List.addCategory(newCategory);
-			start.Main.List.deleteCategory(oldCategory);
-			
-		} catch (Exception e) {
-			new exceptions.Exception(e.getMessage());
-		}
 		
 	}
 }

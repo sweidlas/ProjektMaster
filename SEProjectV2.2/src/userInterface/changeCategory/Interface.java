@@ -10,6 +10,7 @@ import java.awt.List;
 import java.awt.TextField;
 
 import javax.swing.JFrame;
+import javax.swing.JList;
 
 @SuppressWarnings("serial")
 public class Interface extends JFrame{
@@ -17,7 +18,7 @@ public class Interface extends JFrame{
 
 	public Button deleteCategory;
 	public Button addCat;
-	List list;
+	public List list;
 	public TextField addCategoryTF;
 	
 	public Interface() {

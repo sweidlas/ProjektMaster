@@ -7,15 +7,19 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Label;
 import java.awt.TextField;
+
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 public class Layout extends JPanel{	
 
 	private static final long serialVersionUID = 1L;
 	public Button addProduct, search, editCategory; 
-	DataTable table = new DataTable();
 	JScrollPane pane;
+	JLabel term;
+	JTextField termTF;
 	
 	Layout(){
 		
@@ -27,34 +31,42 @@ public class Layout extends JPanel{
 		myGBC.weightx = 1;
 		myGBC.weighty = 1;
 		
-		// button add product
+		// button search
 		myGBC.gridx = 5;
 		myGBC.gridy = 0;
 		myGBC.gridwidth = 1; 
 		myGBC.gridheight = 1; 
 		myGBC.fill = GridBagConstraints.BOTH;
+		search = new Button ("Produkt Suchen");
+		search.setBackground(Color.cyan);
+		add(search,myGBC);
+		
+		// button addProduct
+		myGBC.gridx = 5;
+		myGBC.gridy = 1;
+		myGBC.gridwidth = 1; // width of the element
+		myGBC.gridheight = 1; // height of the element
 		myGBC.fill = GridBagConstraints.BOTH;
 		addProduct = new Button ("Produkt hinzufügen");
 		addProduct.setBackground(Color.green);
 		add(addProduct,myGBC);
 		
-		// button edit Category
+		// button edit category
 		myGBC.gridx = 5;
-		myGBC.gridy = 1;
-		myGBC.gridwidth = 1; // width of the element
-		myGBC.gridheight = 1; // height of the element
+		myGBC.gridy = 2;
+		myGBC.gridwidth = 1;
+		myGBC.gridheight = 1; 
+		myGBC.fill = GridBagConstraints.BOTH;
 		editCategory = new Button ("Kategorien bearbeiten");
 		editCategory.setBackground(Color.green);
 		add(editCategory,myGBC);
-		
-
 		
 		// term
 		myGBC.gridx = 0;
 		myGBC.gridy = 0;
 		myGBC.gridwidth = 1; 
 		myGBC.gridheight = 1; 
-		Label term = new Label ("Suchbegriff:");
+		term = new JLabel ("Suchbegriff:");
 		add(term,myGBC);
 		
 		// Search Input
@@ -63,7 +75,7 @@ public class Layout extends JPanel{
 		myGBC.gridwidth = 4; 
 		myGBC.gridheight = 1;
 		myGBC.fill = GridBagConstraints.BOTH;
-		TextField termTF = new TextField ();
+		termTF = new JTextField ();
 		add(termTF,myGBC);
 
 		// Table
@@ -72,7 +84,7 @@ public class Layout extends JPanel{
 		myGBC.gridwidth = 6;
 		myGBC.gridheight = 6; 
 		myGBC.fill = GridBagConstraints.BOTH;
-		pane = new JScrollPane(table);
+		pane = new JScrollPane(start.Main.table);
 		add(pane,myGBC);
 		
 		//GridBag solution
@@ -100,6 +112,6 @@ public class Layout extends JPanel{
 	
 	public void refreshTable() {
 		
-		table.setNewDatabase();
+		//table.setNewDatabase();
 	}
 }
