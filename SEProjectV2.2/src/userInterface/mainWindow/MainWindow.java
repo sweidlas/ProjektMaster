@@ -17,7 +17,7 @@ public class MainWindow extends JFrame implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
 	static Layout mainLayout;
-	userInterface.editProductInterface.EditProduct editProduct;
+	userInterface.editProductInterface.AddProduct addProduct;
 	userInterface.changeCategory.ChangeCategory changeCategory;
 	
 	public MainWindow() {
@@ -78,7 +78,7 @@ public class MainWindow extends JFrame implements ActionListener{
 
 		//mainFrame Events
 		if(event.getSource() == mainLayout.addProduct){ //Opens Add Product Interface
-			editProduct = new userInterface.editProductInterface.EditProduct();
+			addProduct = new userInterface.editProductInterface.AddProduct();
 		} else if(event.getSource() == mainLayout.editCategory) { //Opens changeCategory Interface
 			changeCategory = new userInterface.changeCategory.ChangeCategory();
 		}	
