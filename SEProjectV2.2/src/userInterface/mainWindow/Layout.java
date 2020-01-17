@@ -109,9 +109,4 @@ public class Layout extends JPanel{
 		sh = new Label (shString);
 		add(sh,myGBC);
 	}
-	
-	public void refreshTable() {
-		
-		//table.setNewDatabase();
-	}
 }

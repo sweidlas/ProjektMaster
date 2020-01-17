@@ -1,6 +1,5 @@
 package userInterface.mainWindow;
 
-import javax.swing.table.TableRowSorter;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
@@ -14,7 +13,7 @@ import javax.swing.event.DocumentListener;
 
 public class MainWindow extends JFrame implements ActionListener{
 	
-	public static ArrayList<String> categoryList = new ArrayList<String>();
+	
 	
 	private static final long serialVersionUID = 1L;
 	static Layout mainLayout;
@@ -66,16 +65,12 @@ public class MainWindow extends JFrame implements ActionListener{
 				// set filter to the string, case insensitive
 				else {
 					start.Main.table.sorter.setRowFilter(RowFilter.regexFilter(("(?i)" + str), start.Main.table.getSelectedColumns()));
-					
-					
 				}
 
 			}
 		});
-
-		
 		this.setVisible(true);
-	}
+	}	
 
 	
 	@Override
@@ -84,64 +79,15 @@ public class MainWindow extends JFrame implements ActionListener{
 		//mainFrame Events
 		if(event.getSource() == mainLayout.addProduct){ //Opens Add Product Interface
 			editProduct = new userInterface.editProductInterface.EditProduct();
-		     for (String h: categoryList) {
+		     for (String h: start.Main.categoryList) {
 			       editProduct.categories.add(h);
-			       editProduct.addProduct.addActionListener(this);
+			       
 		     }
 		} else if(event.getSource() == mainLayout.editCategory) { //Opens changeCategory Interface
 			changeCategory = new userInterface.changeCategory.ChangeCategory();
-			changeCategory.deleteCategory.addActionListener(this);
-			changeCategory.addCat.addActionListener(this);
-			
-		} else if(event.getSource() == mainLayout.search) { //Search in Table (Probably not used)
-			//TODO start		
-		}
-		
-		//editProduct Events
-		if (editProduct != null) {
-			if(event.getSource() == editProduct.addProduct) { //Add Product to Database&Table
-				editProduct.addProductToShelf();
-
-				mainLayout.refreshTable();
-			}	
-		} 
-
-		//changeCategory Events
-		if (changeCategory != null) {
-			if(event.getSource() == changeCategory.deleteCategory) { //Delete Category to Database
-			//TODO deleteCategory
-			} else if(event.getSource() == changeCategory.addCat) { //Add Category
-				try {
-					
-					this.addCategory(changeCategory.addCategoryTF.getText());
-					//changeCategory.list.add(changeCategory.addCategoryTF.getText());
-				} catch (Exception e) {
-					new exceptions.Exception(e.getMessage());
-				}
-				changeCategory.refreshList();
-			}	
-		}
-		System.out.println(event.getActionCommand());
+		}	
+		System.out.println(event.getActionCommand()+" pressed in MainFrame");
 	}
-	
-	public void testCategory(String testMe) throws Exception{
-		if (!categoryList.contains(testMe)) {
-			throw new Exception("Kategorie exestiert nicht");
-		}
-	}
-		
-	public void addCategory(String name) throws Exception{
-		if (categoryList.contains(name)) {
-			throw new Exception("Category already used");
-		} else {categoryList.add(name);}
-	}
-	
-	public void deleteCategory(String category){
-		if (categoryList.contains(category)) {
-			categoryList.remove(category);
-		} else {
-			System.out.println("Category doesn't exist!");//this should not be possible
-		}
-	}
-	
 }
+	
+		

@@ -8,9 +8,7 @@ import java.awt.Insets;
 import java.awt.Label;
 import java.awt.List;
 import java.awt.TextField;
-
 import javax.swing.JFrame;
-import javax.swing.JList;
 
 @SuppressWarnings("serial")
 public class Interface extends JFrame{

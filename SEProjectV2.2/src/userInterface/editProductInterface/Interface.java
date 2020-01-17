@@ -1,15 +1,14 @@
 package userInterface.editProductInterface;
-/*
+
 import java.awt.Button;
+import java.awt.Choice;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Label;
 import java.awt.TextField;
-*/
-import java.awt.*;
-import java.awt.event.*;
+
 
 import javax.swing.JFrame;
 

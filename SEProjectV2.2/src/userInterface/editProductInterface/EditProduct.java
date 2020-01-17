@@ -1,12 +1,13 @@
 package userInterface.editProductInterface;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.lang.Exception;
-import start.Main;
 import java.util.ArrayList;
 
 
 @SuppressWarnings("serial")
-public class EditProduct extends Interface {
+public class EditProduct extends Interface implements ActionListener{
 	
 	 public ArrayList<Integer> Fehlermeldungen = new ArrayList<Integer>();
 	// view of the window
@@ -14,8 +15,20 @@ public class EditProduct extends Interface {
 		super();
 		this.setDefaultCloseOperation(Interface.DISPOSE_ON_CLOSE);
 		this.setLocationRelativeTo(null);//Middle of screen
+		this.addProduct.addActionListener(this);
 
 	} // addProduct
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		//editProduct Events
+		
+		if(e.getSource() == this.addProduct) { //Add Product to Database&Table
+			this.addProductToShelf();
+		}		
+	}  
+ 	
+
 	
 	public void editProduct(int index) {
 		 
@@ -149,31 +162,6 @@ public class EditProduct extends Interface {
  	    if (name.length() > 256 | name.length() <= 1) {return 1;}
  	    else return 0;
  	  } 
-
-
-private int checkCategoryname(String name) {
- 	    //List<Character> Zeichen = new List<Character>();
- 	    ArrayList<Character> Zeichen = new ArrayList<Character>();
- 	    Zeichen.add('a'); Zeichen.add('b'); Zeichen.add('c'); Zeichen.add('d'); Zeichen.add('e'); Zeichen.add('f');
- 	    Zeichen.add('g'); Zeichen.add('h'); Zeichen.add('i'); Zeichen.add('j'); Zeichen.add('k'); Zeichen.add('l'); 
- 	    Zeichen.add('m'); Zeichen.add('n'); Zeichen.add('o'); Zeichen.add('p'); Zeichen.add('q'); Zeichen.add('r');
- 	    Zeichen.add('s'); Zeichen.add('t'); Zeichen.add('u'); Zeichen.add('v'); Zeichen.add('w'); Zeichen.add('x');
- 	    Zeichen.add('y'); Zeichen.add('z');
- 	    Zeichen.add('A'); Zeichen.add('B'); Zeichen.add('C'); Zeichen.add('D'); Zeichen.add('E'); Zeichen.add('F');
- 	    Zeichen.add('G'); Zeichen.add('H'); Zeichen.add('I'); Zeichen.add('J'); Zeichen.add('K'); Zeichen.add('L');
- 	    Zeichen.add('M'); Zeichen.add('N'); Zeichen.add('O'); Zeichen.add('P'); Zeichen.add('Q'); Zeichen.add('R');
- 	    Zeichen.add('S'); Zeichen.add('T'); Zeichen.add('U'); Zeichen.add('V'); Zeichen.add('W'); Zeichen.add('X');
- 	    Zeichen.add('Y'); Zeichen.add('Z');
- 	    Zeichen.add('0'); Zeichen.add('1'); Zeichen.add('2'); Zeichen.add('3'); Zeichen.add('4'); Zeichen.add('5');
- 	    Zeichen.add('6'); Zeichen.add('7'); Zeichen.add('8'); Zeichen.add('9');
-
- 	    //char[] chara = name.toCharArray();
- 	    for (char ch: name.toCharArray()) {
- 	      if (Zeichen.contains(ch) == false) return 2; //wrong character  
- 	    }
- 	    if (name.length() > 256 | name.length() <= 1) {return 1;}
- 	    else return 0;
- 	  } 
   
   
 private int checkStocknumber(String Stocknumber) {//TODO Never uses Catch
@@ -272,7 +260,8 @@ private int checkQuantity(String quantity) {
  		}
  		int zahl = Integer.parseInt(ganz);
  		return zahl;
- 	}  
- 	
+ 	}
+
+
 	
 } // public class addProduct

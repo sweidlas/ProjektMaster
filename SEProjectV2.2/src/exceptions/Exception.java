@@ -17,6 +17,7 @@ public class Exception extends Frame implements ActionListener {
 	
 	public Exception(String problem) {
 		super ("Fehler"); // set title
+		this.setLocationRelativeTo(null);
 		GridBagLayout myGBL = new GridBagLayout ();
 		setLayout(myGBL);
 		
