@@ -1,6 +1,6 @@
 package userInterface.editProductInterface;
 
-import java.awt.Button;
+
 import java.awt.Choice;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -9,12 +9,12 @@ import java.awt.Insets;
 import java.awt.Label;
 import java.awt.TextField;
 
-
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
 public class Interface extends JFrame {
-	   public Button addProduct;
+	   public JButton addProduct;
 	   protected TextField descriptionTF, weightTF, priceTF, newCategoryTF, stocknumberTF, quantityTF;
 	   protected Label leereEingabeFM, descriptionFM, weightFM, priceFM, newCategoryFM, stocknumberFM, quantityFM;
 	   GridBagConstraints myGBC;
@@ -38,7 +38,7 @@ public class Interface extends JFrame {
 	     myGBC.gridy = 10;
 	     myGBC.gridwidth = 1; // width of the element
 	     myGBC.gridheight = 1; // height of the element
-	     addProduct = new Button ("Produkt hinzufügen");
+	     addProduct = new JButton ("Produkt hinzufügen");
 	     addProduct.setBackground(Color.green);
 	     myGBL.setConstraints(addProduct, myGBC);
 	     add(addProduct);

@@ -1,5 +1,7 @@
 package userInterface.mainWindow;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.table.*;
 import javax.swing.JCheckBox;
@@ -32,7 +34,17 @@ public class DataTable extends JTable{
 		sorter=new TableRowSorter<>(model);
 		this.setRowSorter(sorter);
 		//setNewDatabase();
-		//TODO Change double click on List opens EditProduct Frame
+		//TODO Open Editing frame with correct values
+ 		addMouseListener(new MouseAdapter() { 
+ 	          public void mousePressed(MouseEvent e) { 
+ 	        	int row = ((DataTable) e.getSource()).getSelectedRow();
+ 	        	if ((e.getClickCount()==2) && (row!=-1)) {
+ 	        		userInterface.editProductInterface.EditProduct editProduct = new userInterface.editProductInterface.EditProduct();
+ 	        		editProduct.addProduct.setText("Speichern");
+ 	        		editProduct.editProduct(row);
+ 	        	} 
+ 	          }
+ 	        }); 
     }
 	
 	

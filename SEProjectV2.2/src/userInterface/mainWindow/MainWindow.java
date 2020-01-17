@@ -79,10 +79,6 @@ public class MainWindow extends JFrame implements ActionListener{
 		//mainFrame Events
 		if(event.getSource() == mainLayout.addProduct){ //Opens Add Product Interface
 			editProduct = new userInterface.editProductInterface.EditProduct();
-		     for (String h: start.Main.categoryList) {
-			       editProduct.categories.add(h);
-			       
-		     }
 		} else if(event.getSource() == mainLayout.editCategory) { //Opens changeCategory Interface
 			changeCategory = new userInterface.changeCategory.ChangeCategory();
 		}	

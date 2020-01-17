@@ -25,23 +25,21 @@ public class EditProduct extends Interface implements ActionListener{
 		
 		if(e.getSource() == this.addProduct) { //Add Product to Database&Table
 			this.addProductToShelf();
-		}		
+		}	
 	}  
  	
 
 	
 	public void editProduct(int index) {
 		 
-	
-//		Product p =  index
-//		descriptionTF.setText(p.getName());
-//		weightTF.setText(p.getWeight());
-//		quantityTF.setText(p.getAmount());
-//		stocknumberTF.setText(p.getNumber());
-//		priceTF.setText(p.getPrice());
-//		newCategoryTF.setText(p.getCategory());
-//		addProductToShelf();
-		//TODO delete Product from Database if Fehlermeldungen.empty()
+		descriptionTF.setText((String) start.Main.table.getValueAt(index, 1));
+		weightTF.setText((String) start.Main.table.getValueAt(index, 6));
+		quantityTF.setText((String) start.Main.table.getValueAt(index, 2));
+		stocknumberTF.setText((String) start.Main.table.getValueAt(index, 5));
+		priceTF.setText((String) start.Main.table.getValueAt(index, 4));
+		newCategoryTF.setText((String) start.Main.table.getValueAt(index, 3));
+		//addProductToShelf();
+		//if (Fehlermeldungen.isEmpty()) {start.Main.table.remove(index);}
 	}
 	
 	public void addProductToShelf() {
@@ -59,7 +57,6 @@ public class EditProduct extends Interface implements ActionListener{
 		descriptionFM.setText("");
 		weightFM.setText(""); 
 		priceFM.setText(""); 
-		//newCategoryFM.setText(""); 
 		stocknumberFM.setText(""); 
 		quantityFM.setText("");
 		 	   
@@ -68,11 +65,6 @@ public class EditProduct extends Interface implements ActionListener{
  	    int desc = checkProductname(name);
  	    if (desc == 1) {Fehlermeldungen.add(11);}//Input to Long/Small
  	    if (desc == 2) {Fehlermeldungen.add(12);}//wrong character
-
- 	    //newCategoryOK   
-// 	    int cat = checkCategoryname(category);
-// 	    if (cat == 1) {Fehlermeldungen.add(21);}//Input to Long/Small
-// 	    if (cat == 2) {Fehlermeldungen.add(22);}//wrong character 
 
  	    //stocknumberOK
  	    int sto = checkStocknumber(number);
@@ -84,8 +76,9 @@ public class EditProduct extends Interface implements ActionListener{
  	    if (pri == 1) {Fehlermeldungen.add(41);}//Number to Big/Small
 
  	    //weightOK
- 	    int wei = checkWeight(weight);
+ 	    int wei = checkWeightSyntax(weight);
  	    if (wei == 1) {Fehlermeldungen.add(51);}//Wrong Input
+ 	    
 
  	    //quantityOK
  	    int qua = checkQuantity(quantity);
@@ -164,7 +157,7 @@ public class EditProduct extends Interface implements ActionListener{
  	  } 
   
   
-private int checkStocknumber(String Stocknumber) {//TODO Never uses Catch
+	private int checkStocknumber(String Stocknumber) {//TODO Never uses Catch
  	    try {
  	    	Integer.parseInt(Stocknumber);
  	      if (Stocknumber.length() == 6) return 0;
@@ -175,7 +168,7 @@ private int checkStocknumber(String Stocknumber) {//TODO Never uses Catch
  	    }
  	  }
   
-private int checkPrice(String price)  {
+	private int checkPrice(String price)  {
  	    String[] teil = price.split(",");
  	    if (teil.length == 2) {
  	      String i = teil[0];
@@ -205,62 +198,78 @@ private int checkPrice(String price)  {
  	    }
  	    else return 1;
  	  }
-  
-private static int checkWeight(String weight)  {  //Input in Kg
- 	    String[] part = weight.split(",");
- 	    if (part.length == 2) {
- 	      String i = part[0];
- 	      String a = part[1];
+	
+	///////////////////// NOT FINISHED (Idea) ////////////////////7
+	private int checkWeightInShelf(int weight){
+		//search with Stocknumbers > all Products shelf
+		//>>table will only show Products in the same shelf..? 
+		//if not possible more inefficient 
+		int workload = 0;
+		for (int ii = 0 ; start.Main.table.getRowCount()>=ii ; ii++) { //go through all Rows
+			//workload = workload + (weight*amount) 
+			workload+=Integer.parseInt((String) start.Main.table.getValueAt(ii, 2))*Integer.parseInt((String) start.Main.table.getValueAt(ii, 6));
+			
+			//Problems: Weight in decimal number | all Rows (not only one shelf) | unit weight?
+		}
+		if (workload > 10000) {return 1;}
+		return 0;
+	}
+	  
+	private static int checkWeightSyntax(String weight)  {  //Input in Kg
+		    String[] part = weight.split(",");
+		    if (part.length == 2) {
+		      String i = part[0];
+		      String a = part[1];
 
- 	      try {
- 	    	  Integer.parseInt(i);
- 	    	  Integer.parseInt(a);
- 	        if ((i.length() <= 5) & (a.length() <= 4)) { return 0;}
- 	        else return 1; 
- 	      }
- 	      catch(Exception ee) {
- 	        return 1;
- 	      }
- 	    }
- 	    else if (part.length == 1) {
- 	    	
- 	      String u = part[0];   
- 	      try {
- 	    	 Integer.parseInt(u);
- 	        if (u.length() <= 4 | u == "10000") { return 0;}
- 	        else return 1;
- 	      }
- 	      catch(NumberFormatException ee) {
- 	        return 1;
- 	      }
+		      try {
+		    	  Integer.parseInt(i);
+		    	  Integer.parseInt(a);
+		        if ((i.length() <= 5) & (a.length() <= 4)) { return 0;}
+		        else return 1; 
+		      }
+		      catch(Exception ee) {
+		        return 1;
+		      }
+		    }
+		    else if (part.length == 1) {
+		    	
+		      String u = part[0];   
+		      try {
+		    	 Integer.parseInt(u);
+		        if (u.length() <= 4 | u == "10000") { return 0;}
+		        else return 1;
+		      }
+		      catch(NumberFormatException ee) {
+		        return 1;
+		      }
 
- 	    }
- 	    else return 1;
- 	  }
+		    }
+		    else return 1;
+		  }
 
-private int checkQuantity(String quantity) {
- 	    try {
- 	    	
- 	      int zahl2 = Integer.parseInt(quantity);
- 	      if (zahl2 <= 100000000) return 0;// else: Zahl zu groß 
- 	      }
- 	    catch(Exception ee) {
- 	       //print: keine Buchstaben   
- 	    }
- 	   return 1;
- 	  }
+	private int checkQuantity(String quantity) {
+	 	    try {
+	 	    	
+	 	      int zahl2 = Integer.parseInt(quantity);
+	 	      if (zahl2 <= 100000000) return 0;// else: Zahl zu groß 
+	 	      }
+	 	    catch(Exception ee) {
+	 	       //print: keine Buchstaben   
+	 	    }
+	 	   return 1;
+	 	  }
 
- 	  //a
+	 	  //a
 
- 	public static int parseToInt (String a) {
- 		String[] teil = a.split(",");
- 		String ganz = "";
- 		for(int i = 0;i<(teil.length);i++) {
- 			ganz = ganz + teil[i];
- 		}
- 		int zahl = Integer.parseInt(ganz);
- 		return zahl;
- 	}
+	 	public static int parseToInt (String a) {
+	 		String[] teil = a.split(",");
+	 		String ganz = "";
+	 		for(int i = 0;i<(teil.length);i++) {
+	 			ganz = ganz + teil[i];
+	 		}
+	 		int zahl = Integer.parseInt(ganz);
+	 		return zahl;
+	 	}
 
 
 	
