@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.table.*;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 //TableModel that returns the actual class and not String
@@ -20,7 +21,7 @@ public class DataTable extends JTable{
 	static String[] columNames = {"Produktbezeichnung",
 			"Anzahl",
 			"Kategorie",
-			"StÃ¼ckpreis(in Cent)",
+			"Stückpreis (in Cent)",
 			"Lagernummer",
 			"Gewicht"};
 	
