@@ -24,19 +24,15 @@ package start;
 
  	static void save(DefaultTableModel model) {
  		Path path = Paths.get(MYPATH + filename);
- 		System.out.println(HOMEDIR);
- 		System.out.println(MYPATH + filename);
  		try (BufferedWriter writer = Files.newBufferedWriter(path)) {
  			for (int row = 0; row < model.getRowCount(); row++) {
  				String content = "";
  				for (int column = 0; column < model.getColumnCount(); column++) {
  					content += model.getValueAt(row, column).toString() + ";";
 
- 					System.out.println(content);
-
  				}
  				writer.write(content + NEWLINE);
-
+				writer.flush();
  			}
  			writer.close();
  		} catch (Exception e) {
@@ -50,10 +46,10 @@ package start;
  		File file = new File(MYPATH + filename);
  		String line;
  		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
- 			while ((line = br.readLine()) != null) {
- 				System.out.println("!!" + line);
+ 			while (((line = br.readLine()) != null) && (line.length)>3) { //temporary Bug fix for final line garbage
  				String[] data = line.split(";");
  				model.addRow(data);
+				br.flush();
  			}
  			br.close();
  		} catch (Exception e) {
