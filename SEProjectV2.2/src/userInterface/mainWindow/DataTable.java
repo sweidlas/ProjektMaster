@@ -33,6 +33,8 @@ public class DataTable extends JTable{
 		super(model);
 		sorter=new TableRowSorter<>(model);
 		this.setRowSorter(sorter);
+		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		getTableHeader().setReorderingAllowed(false);
 		//setNewDatabase();
 		//TODO Open Editing frame with correct values
  		addMouseListener(new MouseAdapter() { 
