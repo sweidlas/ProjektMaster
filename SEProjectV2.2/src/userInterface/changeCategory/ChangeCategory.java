@@ -15,6 +15,7 @@ public class ChangeCategory extends Interface implements ActionListener{
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setSize(300, 250);
 		this.setLocationRelativeTo(null);//Middle of screen
+		this.setResizable(false);
 		this.deleteCategory.addActionListener(this);
 		this.addCat.addActionListener(this);
 
@@ -47,7 +48,7 @@ public class ChangeCategory extends Interface implements ActionListener{
 		
 	public void addCategory(String name) throws Exception{
 		if (start.Main.categoryList.contains(name)) {
-			throw new Exception("Category already used");
+			throw new Exception("Kategorie schon belegt");
 		} else {
 			if (checkCategoryname(name)==0) { start.Main.categoryList.add(name);System.out.println(name + "Product added");} 
 			else { throw new Exception("Invalide Eingabe");}

@@ -21,7 +21,7 @@ public class DataTable extends JTable{
 	static String[] columNames = {"Produktbezeichnung",
 			"Anzahl",
 			"Kategorie",
-			"Stückpreis (in Cent)",
+			"StÃ¼ckpreis (in Cent)",
 			"Lagernummer",
 			"Gewicht"};
 	
@@ -34,17 +34,18 @@ public class DataTable extends JTable{
 		super(model);
 		sorter=new TableRowSorter<>(model);
 		this.setRowSorter(sorter);
+
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		getTableHeader().setReorderingAllowed(false);
 		//setNewDatabase();
 		//TODO Open Editing frame with correct values
  		addMouseListener(new MouseAdapter() { 
  	          public void mousePressed(MouseEvent e) { 
- 	        	int row = ((DataTable) e.getSource()).getSelectedRow();
- 	        	if ((e.getClickCount()==2) && (row!=-1)) {
- 	        		userInterface.editProductInterface.EditProduct editProduct = new userInterface.editProductInterface.EditProduct();
- 	        		editProduct.addProduct.setText("Speichern");
- 	        		editProduct.editProduct(row);
+ 	        	  
+ 	        	int row = 0;//this.convertRowIndexToModel();(DataTable) e.getSource().
+ 	        	if ((e.getClickCount()==2) && (((DataTable) e.getSource()).getSelectedRow()!=-1)) {
+ 	        		new userInterface.editProductInterface.EditProduct(row);
+
  	        	} 
  	          }
  	        }); 
@@ -62,6 +63,7 @@ public class DataTable extends JTable{
 //			model.addRow(showMe);
 //		}
 //	}
+	
 	@Override	
 	public boolean isCellEditable(int row, int column) {
 	       return false;
