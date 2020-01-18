@@ -1,0 +1,22 @@
+architectural decisions
+We want a program that makes use of a database(DATA) that more or less models the warehouse as such, that is saved regularly, a configuration(DATA) to it, that specifies what valid input is, checking for valid input(CONTROLLER) and we will need a Graphical User Interface(View) to have people interact with the system. Based on that we decided that a Model-View-Controller-Architecture would suite needs (most) but other designs would just work as fine due to the simplicity of the tasks that the program has to manage. Now in our case the controller is the part of the program that will check input for validity mostly and what's going to decide when to tell the GUI what Window to display and the CONTROLLER will modify DATA, given that a user event(input) was valid. 
+Data will alter the information displayed through the GUI and the GUI can query information from DATA.  
+Configuration will be explained (a little bit more) further below.
+
+(here should be a graphic)
+
+The advantages are that we have few small components so it's very maintenance-friendly, since it's all running on one pc we have fast communication and very low communications-overhead. Our system is a little bit less saver then usual usage of a PC in terms of how likely the program is to crash, to get hacked e.g. data stolen or to loose data completely due to complete failure of the operating system. We concluded 'a little bit less saver' because there might be unexpected errors from usage of the programming language in use(Java) and the operating system.  
+
+
+
+We will refer here to the spreadsheet that we did work through together(uebung 6.2):
+Temporal Dependecy:
+continuous: We will need the GUI continuously and given that there might alwys be user input we need the controller continuously. Both components won't be doing anything continuously but they must be ready to be doing something. 
+not continuous: The component that does something continuously is the save-method that saves the database every 5 minutes. So it sleepes for briefly five minutes and does something for a few seconds. 
+Responsibilities:
+Who coordinates the hardware?
+The hardware is coordinated by the operating system and if that would be counted as a component it has to run continuously too. 
+Which data does the monitoring require and where are they read out?
+Monitoring is done through the GUI and orchestrated by the controller and the data that is displayed and thus needed comes from DATA and the data is also read out there.
+What does the configuration affect?
+The configuration affects the internal definition of 'valid user input', it specifies what a valid input is and it also defines how much weight shelves can possibly hold for example.  
