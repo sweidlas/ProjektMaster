@@ -5,7 +5,7 @@ Configuration will be explained (a little bit more) further below.
 
 (here should be a graphic)
 
-The advantages are that we have few small components so it's very maintenance-friendly, since it's all running on one pc we have fast communication and very low communications-overhead. Our system is a little bit less saver then usual usage of a PC in terms of how likely the program is to crash, to get hacked e.g. data stolen or to loose data completely due to complete failure of the operating system. We concluded 'a little bit less saver' because there might be unexpected errors from usage of the programming language in use(Java) and the operating system.  
+The advantages are that we have few small components so it's very maintenance-friendly, since it's all running on the same hardware, supposedly a pc, we have fast communication and very low communications-overhead. Our system is as safe as other systems that have the same size(e.g. number of components), maybe a little bit saver because it's all running on the same hardware, or at least that is how it can be done.
 
 
 
@@ -19,4 +19,4 @@ The hardware is coordinated by the operating system and if that would be counted
 Which data does the monitoring require and where are they read out?
 Monitoring is done through the GUI and orchestrated by the controller and the data that is displayed and thus needed comes from DATA and the data is also read out there.
 What does the configuration affect?
-The configuration affects the internal definition of 'valid user input', it specifies what a valid input is and it also defines how much weight shelves can possibly hold for example.  
+The configuration affects the internal definition of 'valid user input', it specifies what a valid input is and it also defines validity of syntactical valid input, in our case the maximum weight shelves can hold for example.
