@@ -32,7 +32,6 @@ public class MainWindow extends JFrame implements ActionListener{
 		mainLayout = new Layout();
 		c.add(mainLayout, BorderLayout.NORTH);
 		
-		mainLayout.search.addActionListener(this);
 		mainLayout.addProduct.addActionListener(this);
 		mainLayout.editCategory.addActionListener(this);
 		

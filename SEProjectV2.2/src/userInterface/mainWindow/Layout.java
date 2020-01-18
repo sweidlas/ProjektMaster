@@ -1,13 +1,12 @@
 package userInterface.mainWindow;
 
 import java.awt.Button;
+import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Label;
-import java.awt.TextField;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -20,6 +19,12 @@ public class Layout extends JPanel{
 	JScrollPane pane;
 	JLabel term;
 	JTextField termTF;
+	private Checkbox descriptionCB;
+	private Checkbox quantityCB;
+	private Checkbox categoryCB;
+	private Checkbox priceCB;
+	private Checkbox stocknumberCB;
+	private Checkbox weightCB;
 	
 	Layout(){
 		
@@ -31,31 +36,21 @@ public class Layout extends JPanel{
 		myGBC.weightx = 1;
 		myGBC.weighty = 1;
 		
-		// button search
-		myGBC.gridx = 5;
-		myGBC.gridy = 0;
-		myGBC.gridwidth = 1; 
-		myGBC.gridheight = 1; 
-		myGBC.fill = GridBagConstraints.BOTH;
-		search = new Button ("Produkt Suchen");
-		search.setBackground(Color.cyan);
-		add(search,myGBC);
-		
 		// button addProduct
 		myGBC.gridx = 5;
-		myGBC.gridy = 1;
+		myGBC.gridy = 0;
 		myGBC.gridwidth = 1; // width of the element
-		myGBC.gridheight = 1; // height of the element
+		myGBC.gridheight = 3; // height of the element
 		myGBC.fill = GridBagConstraints.BOTH;
-		addProduct = new Button ("Produkt hinzufÃ¼gen");
+		addProduct = new Button ("Produkt hinzufügen");
 		addProduct.setBackground(Color.green);
 		add(addProduct,myGBC);
 		
 		// button edit category
 		myGBC.gridx = 5;
-		myGBC.gridy = 2;
+		myGBC.gridy = 3;
 		myGBC.gridwidth = 1;
-		myGBC.gridheight = 1; 
+		myGBC.gridheight = 2; 
 		myGBC.fill = GridBagConstraints.BOTH;
 		editCategory = new Button ("Kategorien bearbeiten");
 		editCategory.setBackground(Color.green);
@@ -72,15 +67,71 @@ public class Layout extends JPanel{
 		// Search Input
 		myGBC.gridx = 1;
 		myGBC.gridy = 0;
-		myGBC.gridwidth = 4; 
+		myGBC.gridwidth = 3; 
 		myGBC.gridheight = 1;
 		myGBC.fill = GridBagConstraints.BOTH;
 		termTF = new JTextField ();
 		add(termTF,myGBC);
 
+		// Checkboxes = CB
+		// description CB
+		myGBC.gridx = 0;
+		myGBC.gridy = 5;
+		myGBC.gridwidth = 1; 
+		myGBC.gridheight = 1;
+		myGBC.fill = GridBagConstraints.BOTH;
+		descriptionCB = new Checkbox ("Produktbezeichnung");
+		add(descriptionCB,myGBC);
+		
+		// quantity CB
+		myGBC.gridx = 1;
+		myGBC.gridy = 5;
+		myGBC.gridwidth = 1; 
+		myGBC.gridheight = 1;
+		myGBC.fill = GridBagConstraints.BOTH;
+		quantityCB = new Checkbox ("Anzahl");
+		add(quantityCB,myGBC);
+		
+		// category CB
+		myGBC.gridx = 2;
+		myGBC.gridy = 5;
+		myGBC.gridwidth = 1; 
+		myGBC.gridheight = 1;
+		myGBC.fill = GridBagConstraints.BOTH;
+		categoryCB = new Checkbox ("Kategorie");
+		add(categoryCB,myGBC);
+		
+		// price CB
+		myGBC.gridx = 3;
+		myGBC.gridy = 5;
+		myGBC.gridwidth = 1; 
+		myGBC.gridheight = 1;
+		myGBC.fill = GridBagConstraints.BOTH;
+		priceCB = new Checkbox ("Stückpreis");
+		add(priceCB,myGBC);
+	
+		// stocknumber CB
+		myGBC.gridx = 4;
+		myGBC.gridy = 5;
+		myGBC.gridwidth = 1; 
+		myGBC.gridheight = 1;
+		myGBC.fill = GridBagConstraints.BOTH;
+		stocknumberCB = new Checkbox ("Lagernummer");
+		add(stocknumberCB,myGBC);
+		
+		// weight CB
+		myGBC.gridx = 5;
+		myGBC.gridy = 5;
+		myGBC.gridwidth = 1; 
+		myGBC.gridheight = 1;
+		myGBC.fill = GridBagConstraints.BOTH;
+		weightCB = new Checkbox ("Gewicht");
+		add(weightCB,myGBC);
+		
+		
 		// Table
 		myGBC.gridx = 0;
-		myGBC.gridy = 3;
+		myGBC.gridy = 9;
 		myGBC.gridwidth = 6;
 		myGBC.gridheight = 6; 
 		myGBC.fill = GridBagConstraints.BOTH;
@@ -89,7 +140,7 @@ public class Layout extends JPanel{
 		
 		//GridBag solution
 		myGBC.gridx = 0;
-		myGBC.gridy = 3;
+		myGBC.gridy = 9;
 		String shString = "test";
 		Label sh = new Label (shString);
 		add(sh,myGBC);
