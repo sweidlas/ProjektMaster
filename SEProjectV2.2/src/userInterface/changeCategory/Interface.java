@@ -35,7 +35,7 @@ public class Interface extends JFrame{
 		myGBC.gridy = 1;
 		myGBC.gridwidth = 2; // width of the element
 		myGBC.gridheight = 1; // height of the element
-		deleteCategory = new Button ("lÃ¶schen");
+		deleteCategory = new Button ("löschen");
 		deleteCategory.setBackground(Color.red);
 		myGBL.setConstraints(deleteCategory, myGBC);
 		add(deleteCategory, myGBC);

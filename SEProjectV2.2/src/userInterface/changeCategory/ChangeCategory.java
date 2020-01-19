@@ -53,6 +53,7 @@ public class ChangeCategory extends Interface implements ActionListener{
         }
       }
     this.refreshList();
+    addCategoryTF.setText("");
     System.out.println(e.getActionCommand()+" pressed in CategoryFrame");
   }
     

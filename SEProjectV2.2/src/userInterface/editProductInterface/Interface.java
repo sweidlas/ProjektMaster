@@ -24,7 +24,8 @@ public class Interface extends JFrame {
 
 
 	   public Interface() {
-	     super ("Produkt hinzufuegen"); // set title
+	     super ("Produkt hinzufuegen"); //set title
+	    // this.setLocationRelativeTo(null); //Middle of screen
 	     myGBL = new GridBagLayout ();
 	     setLayout(myGBL);
 
@@ -35,20 +36,20 @@ public class Interface extends JFrame {
 	     myGBC.insets = new Insets(10,10,20,20) ; // distance to line: 5 above, 5 left, 5 below, 5 right 
 
 	     // Button addProduct
-	     myGBC.gridx = 4;
-	     myGBC.gridy = 10;
+	     myGBC.gridx = 6;
+	     myGBC.gridy = 7;
 	     myGBC.gridwidth = 1; // width of the element
 	     myGBC.gridheight = 1; // height of the element
-	     addProduct = new JButton ("Produkt hinzufÃ¼gen");
+	     addProduct = new JButton ("Produkt hinzufügen");
 	     addProduct.setBackground(Color.green);
 	     myGBL.setConstraints(addProduct, myGBC);
 	     add(addProduct);
 
 	     myGBC.gridx = 2;
-	     myGBC.gridy = 10;
-	     myGBC.gridwidth = 2; 
+	     myGBC.gridy = 7;
+	     myGBC.gridwidth = 4; 
 	     myGBC.gridheight = 1; 
-	     leereEingabeFM = new Label ("                                               ");
+	     leereEingabeFM = new Label ("                                                    ");
 	     myGBL.setConstraints(leereEingabeFM, myGBC);
 	     add(leereEingabeFM);
 	     
@@ -64,17 +65,17 @@ public class Interface extends JFrame {
 
 	     myGBC.gridx = 2;
 	     myGBC.gridy = 0;
-	     myGBC.gridwidth = 2; 
+	     myGBC.gridwidth = 4; 
 	     myGBC.gridheight = 1; 
 	     descriptionTF = new TextField (50);
 	     myGBL.setConstraints(descriptionTF, myGBC);
 	     add(descriptionTF);
 
-	     myGBC.gridx = 4;
+	     myGBC.gridx = 6;
 	     myGBC.gridy = 0;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
-	     descriptionFM = new Label ("                                               ");
+	     descriptionFM = new Label ("                                                                  ");
 	     myGBL.setConstraints(descriptionFM, myGBC);
 	     add(descriptionFM);
 
@@ -89,13 +90,13 @@ public class Interface extends JFrame {
 
 	     myGBC.gridx = 2;
 	     myGBC.gridy = 1;
-	     myGBC.gridwidth = 1; 
+	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1;
 	     weightTF = new TextField (10);
 	     myGBL.setConstraints(weightTF, myGBC);
 	     add(weightTF); 
 
-	     myGBC.gridx = 3;
+	     myGBC.gridx = 4;
 	     myGBC.gridy = 1;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
@@ -114,13 +115,13 @@ public class Interface extends JFrame {
 
 	     myGBC.gridx = 2;
 	     myGBC.gridy = 2;
-	     myGBC.gridwidth = 1; 
+	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1;
 	     priceTF = new TextField (10);
 	     myGBL.setConstraints(priceTF, myGBC);
 	     add(priceTF);
 
-	     myGBC.gridx = 3;
+	     myGBC.gridx = 4;
 	     myGBC.gridy = 2;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
@@ -131,7 +132,7 @@ public class Interface extends JFrame {
 	     // category
 	     myGBC.gridx = 0;
 	     myGBC.gridy = 3;
-	     myGBC.gridwidth = 1; 
+	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
 	     Label category = new Label ("Kategorie: ");
 	     myGBL.setConstraints(category, myGBC);
@@ -139,7 +140,7 @@ public class Interface extends JFrame {
 	     
 	     myGBC.gridx = 2;
 	     myGBC.gridy = 3;
-	     myGBC.gridwidth = 1; 
+	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1;
 	     categories = new Choice();
 	     //categories.setSize(100, 40);
@@ -160,13 +161,13 @@ public class Interface extends JFrame {
 
 	     myGBC.gridx = 2;
 	     myGBC.gridy = 4;
-	     myGBC.gridwidth = 1;  // enough space?
+	     myGBC.gridwidth = 2;  // enough space?
 	     myGBC.gridheight = 1;
 	     stocknumberTF = new TextField (10);
 	     myGBL.setConstraints(stocknumberTF, myGBC);
 	     add(stocknumberTF);
 
-	     myGBC.gridx = 3;
+	     myGBC.gridx = 4;
 	     myGBC.gridy = 4;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
@@ -176,23 +177,23 @@ public class Interface extends JFrame {
 
 	     // quantity
 	     myGBC.gridx = 0;
-	     myGBC.gridy = 6;
-	     myGBC.gridwidth = 2; 
+	     myGBC.gridy = 5;
+	     myGBC.gridwidth = 1; 
 	     myGBC.gridheight = 1; 
 	     Label quantity = new Label ("Anzahl: "); // get.Quantity
 	     myGBL.setConstraints(quantity, myGBC);
 	     add(quantity);
 
 	     myGBC.gridx = 2;
-	     myGBC.gridy = 6;
-	     myGBC.gridwidth = 1; 
+	     myGBC.gridy = 5;
+	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1;
 	     quantityTF = new TextField (10);
 	     myGBL.setConstraints(quantityTF, myGBC);
 	     add(quantityTF);
 
-	     myGBC.gridx = 3;
-	     myGBC.gridy = 6;
+	     myGBC.gridx = 4;
+	     myGBC.gridy = 5;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
 	     quantityFM = new Label ("                                               "); // get.Quantity

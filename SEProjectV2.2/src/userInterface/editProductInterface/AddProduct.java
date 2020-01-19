@@ -12,16 +12,13 @@ public class AddProduct extends Interface implements ActionListener{
 
 
   
-   public ArrayList<Integer> Fehlermeldungen = new ArrayList<Integer>();
+   
   // view of the window
   public AddProduct(){
     super();
     this.setDefaultCloseOperation(Interface.DISPOSE_ON_CLOSE);
-    this.setLocationRelativeTo(null);//Middle of screen
-    this.setResizable(false);
+    //this.setResizable(false);
     this.addProduct.addActionListener(this);
-    
-
   } // addProduct
 
   public void actionPerformed(ActionEvent e) {
@@ -31,27 +28,11 @@ public class AddProduct extends Interface implements ActionListener{
     } 
   }  
   
-
   
-  public void addProduct() {
-    Fehlermeldungen.clear();
-      
-    String name = descriptionTF.getText();
-    String weight= weightTF.getText();
-    String quantity= quantityTF.getText();
-    String number= stocknumberTF.getText();
-    String price= priceTF.getText();
-    String category= categories.getSelectedItem();
-    
-    leereEingabeFM.setText("");
-    descriptionFM.setText("");
-    weightFM.setText(""); 
-    priceFM.setText(""); 
-    stocknumberFM.setText(""); 
-    quantityFM.setText("");
-         
-    //TODO Bug Check + include more Error warnings
-      //descriptionOK
+  
+  public boolean checkProduct(String name, String category, String number, String weight, String price, String quantity) {
+	  ArrayList<Integer> Fehlermeldungen = new ArrayList<Integer>();
+	  
       int desc = checkProductname(name);
       if (desc == 1) {Fehlermeldungen.add(11);}//Input to Long/Small
       if (desc == 2) {Fehlermeldungen.add(12);}//wrong character
@@ -77,14 +58,61 @@ public class AddProduct extends Interface implements ActionListener{
       if (qua == 2) {Fehlermeldungen.add(62);}//zahl zu groﬂ
       
       System.out.println(Fehlermeldungen);
+      
+      if (Fehlermeldungen.isEmpty()) {return true;}
 
     if (name.length()==0|category.length()==0|number.length()==0|price.length()==0|weight.length()==0|quantity.length()==0) {
-      leereEingabeFM.setText("Bitte alle Felder ausf√ºllen!");}
+      leereEingabeFM.setText("Bitte alle Felder ausf¸llen!");}
     else {
-      if (Fehlermeldungen.isEmpty()) {
+    
+    if (Fehlermeldungen.contains(11)) {descriptionFM.setText("zu viele Zeichen");} //Productdescription contains more than 256 characters
+    if (Fehlermeldungen.contains(12)) {descriptionFM.setText("falsches Zeichen");}
+   
+    if (Fehlermeldungen.contains(31)) {stocknumberFM.setText("6- stellige Zahl");}
+    if (Fehlermeldungen.contains(32)) {stocknumberFM.setText("keine Buchstaben");}
+    
+    if (Fehlermeldungen.contains(41)) {priceFM.setText("falsches Zeichen");}
+    if (Fehlermeldungen.contains(42)) {priceFM.setText("Zahl zu groﬂ");}
+    if (Fehlermeldungen.contains(43)) {priceFM.setText("zu viele Nachkommastellen");}
+
+    if (Fehlermeldungen.contains(51)) {weightFM.setText("falsches Zeichen");} 
+    if (Fehlermeldungen.contains(52)) {weightFM.setText("Zahl zu groﬂ");} 
+    if (Fehlermeldungen.contains(53)) {weightFM.setText("zu viele Nachkommastellen");} 
+    
+    if (Fehlermeldungen.contains(61)) {quantityFM.setText("falsches Zeichen");} 
+    if (Fehlermeldungen.contains(62)) {quantityFM.setText("Zahl zu groﬂ");}
+    }
+    return false;
+  
+  }
+
+  
+  
+  
+  
+  
+  public void addProduct() {
+    //Fehlermeldungen.clear();
+      
+    String name = descriptionTF.getText();
+    String weight= weightTF.getText();
+    String quantity= quantityTF.getText();
+    String number= stocknumberTF.getText();
+    String price= priceTF.getText();
+    String category= categories.getSelectedItem();
+    
+    leereEingabeFM.setText("");
+    descriptionFM.setText("");
+    weightFM.setText(""); 
+    priceFM.setText(""); 
+    stocknumberFM.setText(""); 
+    quantityFM.setText("");
+    
+         
+    if (checkProduct(name, category, number, weight, price, quantity) == true) {
          if (checkNameInList(name) == false) {descriptionFM.setText("Produktbezeichnung schon vergeben");}
          else if (checkStocknumberInList(number) == false) {stocknumberFM.setText("Lagerplatz schon vergeben");}
-         else if (checkWeightInShelf(number, weight, quantity) == 1) {leereEingabeFM.setText("Regal √ºberlastet");}
+         else if (checkWeightInShelf(number, weight, quantity) == 1) {leereEingabeFM.setText("Regal ¸berlastet");}
          else {
           String[] newRow = {name, category, number, weight, price, quantity};
           int iii=start.Main.categoryList.indexOf(category);
@@ -93,34 +121,12 @@ public class AddProduct extends Interface implements ActionListener{
           start.Main.table.model.addRow(newRow);
           this.dispose();
           }
-      }
-      else {
-  
-             if (Fehlermeldungen.contains(11)) {descriptionFM.setText("zu viele Zeichen");} //Productdescription contains more than 256 characters
-             if (Fehlermeldungen.contains(12)) {descriptionFM.setText("falsches Zeichen");}
-            
-             if (Fehlermeldungen.contains(31)) {stocknumberFM.setText("6- stellige Zahl");}
-             if (Fehlermeldungen.contains(32)) {stocknumberFM.setText("keine Buchstaben");}
-             
-             if (Fehlermeldungen.contains(41)) {priceFM.setText("falsches Zeichen");}
-             if (Fehlermeldungen.contains(42)) {priceFM.setText("Zahl zu groﬂ");}
-             if (Fehlermeldungen.contains(43)) {priceFM.setText("zu viele Nachkommastellen");}
-  
-             if (Fehlermeldungen.contains(51)) {weightFM.setText("falsches Zeichen");} 
-             if (Fehlermeldungen.contains(52)) {weightFM.setText("Zahl zu groﬂ");} 
-             if (Fehlermeldungen.contains(53)) {weightFM.setText("zu viele Nachkommastellen");} 
-             
-             if (Fehlermeldungen.contains(61)) {quantityFM.setText("falsches Zeichen");} 
-             if (Fehlermeldungen.contains(62)) {quantityFM.setText("Zahl zu groﬂ");}
-      }
-    } 
-  
-    
+      } 
   }
 
 
       
-  private boolean checkNameInList(String name) {
+  boolean checkNameInList(String name) {
     for (int ii = 0; ii < start.Main.table.model.getRowCount(); ii++) { 
       String n = (String) start.Main.table.model.getValueAt(ii, 0);
       if (n.equals(name)) {return false;}
@@ -128,7 +134,7 @@ public class AddProduct extends Interface implements ActionListener{
     return true;
   }
   
-  private boolean checkStocknumberInList(String stocknumber) {
+  boolean checkStocknumberInList(String stocknumber) {
     for (int ii = 0; ii < start.Main.table.model.getRowCount(); ii++) { 
       String n = (String) start.Main.table.model.getValueAt(ii, 2);
       if (n.equals(stocknumber)) {return false;}
@@ -139,7 +145,7 @@ public class AddProduct extends Interface implements ActionListener{
   
   
   
-  private int checkWeightInShelf(String stocknumber, String newWeight, String newQuantity) {
+  int checkWeightInShelf(String stocknumber, String newWeight, String newQuantity) {
     int workload = 0;
     String shelf = stocknumber.substring(0, 3);
     int she = Integer.parseInt(shelf);
@@ -283,7 +289,7 @@ private int checkQuantity(String quantity) {
       try {
         
         int a = Integer.parseInt(quantity);
-        if (a <= 0) return 1;
+        if (a < 0) return 1;
         if (a <= 100000000) return 0;// else: Zahl zu gro√É≈∏ 
         
         }
