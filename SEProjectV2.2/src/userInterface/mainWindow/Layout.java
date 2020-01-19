@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.JCheckBox;
 
 public class Layout extends JPanel{	
 
@@ -19,12 +20,12 @@ public class Layout extends JPanel{
 	JScrollPane pane;
 	JLabel term;
 	JTextField termTF;
-	private Checkbox descriptionCB;
-	private Checkbox quantityCB;
-	private Checkbox categoryCB;
-	private Checkbox priceCB;
-	private Checkbox stocknumberCB;
-	private Checkbox weightCB;
+	private JCheckBox descriptionCB;
+	private JCheckBox quantityCB;
+	private JCheckBox categoryCB;
+	private JCheckBox priceCB;
+	private JCheckBox stocknumberCB;
+	private JCheckBox weightCB;
 	
 	Layout(){
 		
@@ -80,7 +81,8 @@ public class Layout extends JPanel{
 		myGBC.gridwidth = 1; 
 		myGBC.gridheight = 1;
 		myGBC.fill = GridBagConstraints.BOTH;
-		descriptionCB = new Checkbox ("Produktbezeichnung");
+		//descriptionCB = new Checkbox ("Produktbezeichnung");
+		descriptionCB = start.Main.table.getCheckBox(0);
 		add(descriptionCB,myGBC);
 		
 		// quantity CB
@@ -89,7 +91,8 @@ public class Layout extends JPanel{
 		myGBC.gridwidth = 1; 
 		myGBC.gridheight = 1;
 		myGBC.fill = GridBagConstraints.BOTH;
-		quantityCB = new Checkbox ("Anzahl");
+		//quantityCB = new Checkbox ("Anzahl");
+		quantityCB = start.Main.table.getCheckBox(1);
 		add(quantityCB,myGBC);
 		
 		// category CB
@@ -98,7 +101,8 @@ public class Layout extends JPanel{
 		myGBC.gridwidth = 1; 
 		myGBC.gridheight = 1;
 		myGBC.fill = GridBagConstraints.BOTH;
-		categoryCB = new Checkbox ("Kategorie");
+		//categoryCB = new Checkbox ("Kategorie");
+		categoryCB = start.Main.table.getCheckBox(2);
 		add(categoryCB,myGBC);
 		
 		// price CB
@@ -107,7 +111,8 @@ public class Layout extends JPanel{
 		myGBC.gridwidth = 1; 
 		myGBC.gridheight = 1;
 		myGBC.fill = GridBagConstraints.BOTH;
-		priceCB = new Checkbox ("Stückpreis");
+		//priceCB = new Checkbox ("Stückpreis");
+		priceCB = start.Main.table.getCheckBox(3);
 		add(priceCB,myGBC);
 	
 		// stocknumber CB
@@ -116,7 +121,8 @@ public class Layout extends JPanel{
 		myGBC.gridwidth = 1; 
 		myGBC.gridheight = 1;
 		myGBC.fill = GridBagConstraints.BOTH;
-		stocknumberCB = new Checkbox ("Lagernummer");
+		//stocknumberCB = new Checkbox ("Lagernummer");
+		stocknumberCB = start.Main.table.getCheckBox(4);
 		add(stocknumberCB,myGBC);
 		
 		// weight CB
@@ -125,7 +131,8 @@ public class Layout extends JPanel{
 		myGBC.gridwidth = 1; 
 		myGBC.gridheight = 1;
 		myGBC.fill = GridBagConstraints.BOTH;
-		weightCB = new Checkbox ("Gewicht");
+		//weightCB = new Checkbox ("Gewicht");
+		weightCB = start.Main.table.getCheckBox(5);
 		add(weightCB,myGBC);
 		
 		

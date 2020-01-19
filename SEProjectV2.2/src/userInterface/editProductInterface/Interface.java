@@ -20,6 +20,7 @@ public class Interface extends JFrame {
 	   GridBagConstraints myGBC;
 	   GridBagLayout myGBL;
 	   public Choice categories;
+	   
 
 
 	   public Interface() {
@@ -43,13 +44,14 @@ public class Interface extends JFrame {
 	     myGBL.setConstraints(addProduct, myGBC);
 	     add(addProduct);
 
-	     myGBC.gridx = 1;
+	     myGBC.gridx = 2;
 	     myGBC.gridy = 10;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
 	     leereEingabeFM = new Label ("                                               ");
 	     myGBL.setConstraints(leereEingabeFM, myGBC);
 	     add(leereEingabeFM);
+	     
 
 	     // description
 	     myGBC.gridx = 0;
@@ -89,7 +91,7 @@ public class Interface extends JFrame {
 	     myGBC.gridy = 1;
 	     myGBC.gridwidth = 1; 
 	     myGBC.gridheight = 1;
-	     weightTF = new TextField (6);
+	     weightTF = new TextField (10);
 	     myGBL.setConstraints(weightTF, myGBC);
 	     add(weightTF); 
 
@@ -97,7 +99,7 @@ public class Interface extends JFrame {
 	     myGBC.gridy = 1;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
-	     weightFM = new Label ("                                               ");
+	     weightFM = new Label ("                        ");
 	     myGBL.setConstraints(weightFM, myGBC);
 	     add(weightFM);
 
@@ -106,19 +108,19 @@ public class Interface extends JFrame {
 	     myGBC.gridy = 2;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
-	     Label price = new Label ("Stueckpreis(â‚¬): ");
+	     Label price = new Label ("Stückpreis(€): ");
 	     myGBL.setConstraints(price, myGBC);
 	     add(price);
 
 	     myGBC.gridx = 2;
 	     myGBC.gridy = 2;
-	     myGBC.gridwidth = 2; 
+	     myGBC.gridwidth = 1; 
 	     myGBC.gridheight = 1;
-	     priceTF = new TextField (50);
+	     priceTF = new TextField (10);
 	     myGBL.setConstraints(priceTF, myGBC);
 	     add(priceTF);
 
-	     myGBC.gridx = 4;
+	     myGBC.gridx = 3;
 	     myGBC.gridy = 2;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
@@ -135,51 +137,21 @@ public class Interface extends JFrame {
 	     myGBL.setConstraints(category, myGBC);
 	     add(category);
 	     
-	     myGBC.gridx = 1;
+	     myGBC.gridx = 2;
 	     myGBC.gridy = 3;
-	     myGBC.gridwidth = 2; 
+	     myGBC.gridwidth = 1; 
 	     myGBC.gridheight = 1;
 	     categories = new Choice();
-
-	     /*
-	   categories.add("Java");
-	   categories.add("C");
-	   categories.add("VB");
-	   categories.add("Perl");*/
-	  myGBL.setConstraints(categories, myGBC);
-	   for (String h: start.Main.categoryList) {
-		   categories.add(h);
-	   }
-	   add(categories);
-	// new category
-	   
-	     myGBC.gridx = 0;
-	     myGBC.gridy = 4;
-	     myGBC.gridwidth = 2; 
-	     myGBC.gridheight = 1; 
-	     Label newCategory = new Label ("   neue Kategorie: ");
-	     myGBL.setConstraints(newCategory, myGBC);
-	     add(newCategory);
-	     /*
-	     myGBC.gridx = 2;
-	     myGBC.gridy = 4;
-	     myGBC.gridwidth = 2; 
-	     myGBC.gridheight = 1;
-	     newCategoryTF = new TextField (50);
-	     myGBL.setConstraints(newCategoryTF, myGBC);
-	     add(newCategoryTF);
-
-	     myGBC.gridx = 4;
-	     myGBC.gridy = 4;
-	     myGBC.gridwidth = 2; 
-	     myGBC.gridheight = 1; 
-	     newCategoryFM = new Label ("                                               ");
-	     myGBL.setConstraints(newCategoryFM, myGBC);
-	     add(newCategoryFM);*/
+	     //categories.setSize(100, 40);
+		 myGBL.setConstraints(categories, myGBC);
+		   for (String h: start.Main.categoryList) {
+			   categories.add(h);
+		   }
+		 add(categories);
 
 	     // stocknumber
 	     myGBC.gridx = 0;
-	     myGBC.gridy = 5;
+	     myGBC.gridy = 4;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
 	     Label stocknumber = new Label ("Lagernummer: ");
@@ -187,18 +159,18 @@ public class Interface extends JFrame {
 	     add(stocknumber);
 
 	     myGBC.gridx = 2;
-	     myGBC.gridy = 5;
+	     myGBC.gridy = 4;
 	     myGBC.gridwidth = 1;  // enough space?
 	     myGBC.gridheight = 1;
-	     stocknumberTF = new TextField (6);
+	     stocknumberTF = new TextField (10);
 	     myGBL.setConstraints(stocknumberTF, myGBC);
 	     add(stocknumberTF);
 
 	     myGBC.gridx = 3;
-	     myGBC.gridy = 5;
+	     myGBC.gridy = 4;
 	     myGBC.gridwidth = 2; 
 	     myGBC.gridheight = 1; 
-	     stocknumberFM = new Label ("                                               ");
+	     stocknumberFM = new Label ("                                        ");
 	     myGBL.setConstraints(stocknumberFM, myGBC);
 	     add(stocknumberFM);
 
@@ -215,7 +187,7 @@ public class Interface extends JFrame {
 	     myGBC.gridy = 6;
 	     myGBC.gridwidth = 1; 
 	     myGBC.gridheight = 1;
-	     quantityTF = new TextField (3);
+	     quantityTF = new TextField (10);
 	     myGBL.setConstraints(quantityTF, myGBC);
 	     add(quantityTF);
 

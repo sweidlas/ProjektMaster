@@ -1,3 +1,5 @@
+/*
+
 import javax.swing.text.*;
 import javax.swing.*;
 
@@ -30,4 +32,4 @@ public class MyTextField extends JTextField{
 		this.setDocument(new FixedSizeDocument(j));	
 	  }		
 	}
-
+*/

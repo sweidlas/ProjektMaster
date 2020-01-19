@@ -45,7 +45,7 @@ public class Interface extends JFrame{
 		myGBC.gridy = 6;
 		myGBC.gridwidth = 1; 
 		myGBC.gridheight = 1; 
-		addCat = new Button ("HinzufÃ¼rgen");
+		addCat = new Button ("Hinzufügen");
 		addCat.setBackground(Color.green);
 		myGBL.setConstraints(addCat, myGBC);
 		add(addCat, myGBC);
@@ -63,7 +63,7 @@ public class Interface extends JFrame{
 		myGBC.gridy = 5;
 		myGBC.gridwidth = 2; 
 		myGBC.gridheight = 1; 
-		Label addCategory = new Label ("Kategorie hinzufÃ¼gen:");
+		Label addCategory = new Label ("Kategorie hinzufügen:");
 		myGBL.setConstraints(addCategory, myGBC);
 		add(addCategory, myGBC);
 		
