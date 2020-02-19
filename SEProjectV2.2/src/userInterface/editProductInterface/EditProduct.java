@@ -3,7 +3,6 @@ package userInterface.editProductInterface;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.Exception;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.*;
 import java.awt.*;
@@ -224,50 +223,4 @@ public EditProduct(int row) {
 		    }
   }
 }
-	    	
-	    	
-	    	/*
-	    	
-	    	if (checkNameInList(name) == true) {
-	    		start.Main.table.model.setValueAt(name, row, 0);
-	    	} else {descriptionFM.setText("Produktbezeichnung schon vergeben");}
-	    		
-	    	start.Main.table.model.setValueAt(price, row, 4);  //change price
-	    	
-	  			*/
 	    
-	    
-	    
-
-  
-  
-  
-  /*
-  private int checkQuantity(String add, String sub, String before) {
-      try {   
-        int beforeInt = Integer.parseInt(before);
-        int addInt = Integer.parseInt(add);
-        int subInt = Integer.parseInt(sub);
-        if (a <= 0) return 1;
-        if (a <= 100000000) return 0;// else: Zahl zu gro߸ 
-        }
-      catch(Exception ee) {
-    	  leereEingabeFM.setText("Bitte nur Zahlen eingeben");
-         return 1;
-      }
-      return 2;
-    }
-  
-  private int subQuantity(String sub, String before) {
-      try {   
-        int beforeInt = Integer.parseInt(before);
-        int subInt = Integer.parseInt(sub);
-        }
-      catch(Exception ee) {
-    	  leereEingabeFM.setText("Bitte nur Zahlen eingeben");
-         return 1;
-      }
-      return 2;
-    }
- 
-}*/

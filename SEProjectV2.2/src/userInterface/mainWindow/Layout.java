@@ -19,7 +19,7 @@ public class Layout extends JPanel{
 	public Button addProduct, search, editCategory; 
 	JScrollPane pane;
 	JLabel term;
-	JTextField termTF;
+	public JTextField termTF;
 	private JCheckBox descriptionCB;
 	private JCheckBox quantityCB;
 	private JCheckBox categoryCB;

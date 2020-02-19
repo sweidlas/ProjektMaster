@@ -10,7 +10,6 @@ public class AddProduct extends Interface implements ActionListener{
   private static final long serialVersionUID = 1L;
 
 
-
   
    
   // view of the window
@@ -57,7 +56,7 @@ public class AddProduct extends Interface implements ActionListener{
       if (qua == 1) {Fehlermeldungen.add(61);}//Wrong Input
       if (qua == 2) {Fehlermeldungen.add(62);}//zahl zu groß
       
-      System.out.println(Fehlermeldungen);
+      //System.out.println(Fehlermeldungen);
       
       if (Fehlermeldungen.isEmpty()) {return true;}
 
@@ -93,8 +92,8 @@ public class AddProduct extends Interface implements ActionListener{
   
   public void addProduct() {
     //Fehlermeldungen.clear();
-      
-    String name = descriptionTF.getText();
+    
+	String name = descriptionTF.getText();
     String weight= weightTF.getText();
     String quantity= quantityTF.getText();
     String number= stocknumberTF.getText();
@@ -156,15 +155,11 @@ public class AddProduct extends Interface implements ActionListener{
       String n = ((String) start.Main.table.model.getValueAt(ii, 2)).substring(0, 3); //stocknumber
       int num = Integer.parseInt(n);
       if (she == num) {
-        System.out.println("hier");
         int quantity = Integer.parseInt((String) start.Main.table.model.getValueAt(ii, 5));
         int weight = parseToInt((String) start.Main.table.model.getValueAt(ii, 3));
         workload += quantity*weight;
-        System.out.println(weight);
-        System.out.println(workload);}
+        }
     }
-    System.out.println(newQuantityInt);
-    System.out.println(newWeightInt);
     workload += newQuantityInt*newWeightInt;
     if (workload > 100000000) {return 1;}
     return 0;
@@ -189,6 +184,8 @@ public class AddProduct extends Interface implements ActionListener{
       Zeichen.add('-'); Zeichen.add('!'); Zeichen.add('?'); Zeichen.add('.'); Zeichen.add('('); Zeichen.add(')');
       Zeichen.add('_');
       Zeichen.add('ä'); Zeichen.add('ö'); Zeichen.add('ü'); Zeichen.add('Ä'); Zeichen.add('Ö'); Zeichen.add('Ü');
+      Zeichen.add(' '); Zeichen.add('ß');//nachträglich hinzugefügt
+      
 
       //char[] chara = name.toCharArray();
       for (char ch: name.toCharArray()) {
@@ -213,6 +210,17 @@ private int checkStocknumber(String Stocknumber) {//TODO Never uses Catch
     }
   
 private int checkPrice(String price)  {
+	char[] charArray = price.toCharArray();
+	int aaa = 0;
+	for (int aa = 0; aa < price.length(); aa++) {
+		if (charArray[aa] == ',') {
+			aaa++;
+		}	
+	}
+	if (aaa >= 2) return 1;
+	
+	if (price.contains(",")) {
+	}
       String[] teil = price.split(",");
       if (teil.length == 2) {
         String i = teil[0];
@@ -249,6 +257,16 @@ private int checkPrice(String price)  {
     }
   
 private static int checkWeight(String weight)  {  //Input in Kg
+	char[] charArray = weight.toCharArray();
+	int aaa = 0;
+	for (int aa = 0; aa < weight.length(); aa++) {
+		if (charArray[aa] == ',') {
+			aaa++;
+		}	
+	}
+	if (aaa >= 2) return 1;
+	
+	
       String[] part = weight.split(",");
       if (part.length == 2) {
         String i = part[0];

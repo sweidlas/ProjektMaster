@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial")
 public class Interface extends JFrame {
 	   public JButton addProduct;
-	   protected TextField descriptionTF, weightTF, priceTF, newCategoryTF, stocknumberTF, quantityTF;
+	   public TextField descriptionTF, weightTF, priceTF, newCategoryTF, stocknumberTF, quantityTF;
 	   protected Label leereEingabeFM, descriptionFM, weightFM, priceFM, newCategoryFM, stocknumberFM, quantityFM;
 	   GridBagConstraints myGBC;
 	   GridBagLayout myGBL;

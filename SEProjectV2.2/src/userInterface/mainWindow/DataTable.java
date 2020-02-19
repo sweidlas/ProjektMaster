@@ -33,7 +33,7 @@ public class DataTable extends JTable{
   //ArrayList<JCheckBox> searchCheckboxes = new ArrayList<>();
   JCheckBox[] CheckboxArray = new JCheckBox[columnNames.length];
   
-  TableRowSorter sorter;
+  public TableRowSorter sorter;  //im nachhinein public gemacht
     
   public DataTable() {
     
@@ -74,18 +74,7 @@ public class DataTable extends JTable{
           });
     }
   
-  
-//  public void setNewDatabase(){
-//    model.setRowCount(0);
-//    ArrayList<String> databaseAsString = start.Main.List.databaseAsString;
-//    String[] showMe = new String[6];
-//    for (int ii = 0; databaseAsString.size()/6>ii;ii++) {
-//      for (int kk=0; kk<6;kk++) {
-//        showMe[kk] = databaseAsString.get(ii*6+kk);
-//      }
-//      model.addRow(showMe);
-//    }
-//  }
+
   
   @Override 
   public boolean isCellEditable(int row, int column) {
@@ -116,28 +105,7 @@ public class DataTable extends JTable{
       return rv;
 
      }
-  /*
-  // returns selected checkboxes
-  public int[] getSelectedColumns() {
-    ArrayList<Integer> indexesOfSelected = new ArrayList<Integer>();
-    for (int i = 0; i < this.searchCheckboxes.size(); ++i) {
-      JCheckBox box = this.searchCheckboxes.get(i);
-      if (box.isSelected()) {
-        indexesOfSelected.add(i);
-      }
-    }
-    
-    int[] rv = new int[indexesOfSelected.size()];
-    // java is stupid
-    for (int i = 0; i < rv.length; i++) {
-      rv[i] = indexesOfSelected.get(i);
-    }
-    return rv;
-  }
-  
-  ArrayList<JCheckBox> getCheckboxes() {
-    return this.searchCheckboxes;
-  }*/
+
 
   /**
    * returns CheckBox at index

@@ -16,7 +16,7 @@ public class MainWindow extends JFrame implements ActionListener{
 	
 	
 	private static final long serialVersionUID = 1L;
-	static Layout mainLayout;
+	public static Layout mainLayout; // im nachhinein public gemacht
 	userInterface.editProductInterface.AddProduct addProduct;
 	userInterface.changeCategory.ChangeCategory changeCategory;
 	
